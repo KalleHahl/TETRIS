@@ -2,11 +2,11 @@
 
 ## Tehtävät:
 
+* [Laskarit 1](https://github.com/KalleHahl/ot-harjoitustyo/tree/main/laskarit/viikko1)
 
-### Viikko 1
+* [Laskarit 2](https://github.com/KalleHahl/ot-harjoitustyo/tree/main/laskarit/viikko2)
 
-[gitlog.txt](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/laskarit/viikko1/gitlog.txt)
-
-[komentorivi.txt](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
-
-joops
+# Tetris
+## Dokumentaatio:
+* [Vaatimusmäärittely](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
+* [Työaikakirjanpito](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
