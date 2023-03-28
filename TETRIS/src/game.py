@@ -25,6 +25,10 @@ class Game:
         self.draw_piece()
         pygame.display.flip()
 
+    def update(self):
+        self.tetris.move_down(BLOCK)
+       #pygame.time.wait(200)
+
     def draw_piece(self):
         
         piece_coordinates = self.tetris.piece.piece_info()
@@ -54,6 +58,7 @@ class Game:
             if self.tetris.piece == None:
                 self.tetris.new_piece()
             self.events()
+            #self.update()
             self.draw()
             
             
