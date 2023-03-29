@@ -7,5 +7,5 @@
 
 # Tetris
 ## Documentation:
-* [Project definition](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
-* [Work-log](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+* [Project definition](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/definition.md)
+* [Work-log](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/worklog.md)
