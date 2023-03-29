@@ -13,11 +13,13 @@ class Game:
         pygame.init()
         pygame.display.set_caption('Tetris')
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        self.clock = pygame.time.Clock()
         self.end = False
         self.tetris = Tetris()
-        self.left = False
-        self.right = False
+        self.clock = pygame.time.Clock()
+        self.delay = pygame.USEREVENT + 1
+        pygame.time.set_timer(self.delay, 500)
+
+        
         
     def draw(self):
         self.screen.fill(BACKROUND)
@@ -27,10 +29,11 @@ class Game:
         pygame.display.flip()
 
     def update(self):
-        self.tetris.move_down(BLOCK)
+        if self.tetris.end:
+            self.end = True
         if self.tetris.piece.landed == True:
             self.tetris.new_piece()
-        pygame.time.wait(200)
+        self.tetris.full_lines()
 
     def draw_piece(self):
         
@@ -39,8 +42,7 @@ class Game:
             pygame.draw.rect(self.screen, self.tetris.piece.color, (self.tetris.piece.x+coordinate[0]*BLOCK, self.tetris.piece.y+coordinate[1]*BLOCK,BLOCK,BLOCK),0,4)
             pygame.draw.rect(self.screen, (0,0,0), (self.tetris.piece.x+coordinate[0]*BLOCK, self.tetris.piece.y+coordinate[1]*BLOCK,BLOCK,BLOCK),3,4)
 
-            
-        
+
     def events(self):
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -52,6 +54,11 @@ class Game:
                         self.tetris.move_side(BLOCK)
                     if event.key == pygame.K_UP:
                         self.tetris.rotate()
+                    if event.key == pygame.K_DOWN:
+                        self.tetris.move_down(BLOCK)
+
+                if event.type == self.delay:
+                        self.tetris.move_down(BLOCK)
 
     def draw_grid(self):
         for x in range(0,WIDTH,BLOCK):
@@ -66,11 +73,12 @@ class Game:
                 if color == 0:
                     continue
                 pygame.draw.rect(self.screen, color, (BLOCK*x,BLOCK*y,BLOCK,BLOCK),0,4)
-                pygame.draw.rect(self.screen, (0,0,0), (BLOCK*x,BLOCK*y,BLOCK,BLOCK),3,4)
+                pygame.draw.rect(self.screen, (0,0,0), (BLOCK*x,BLOCK*y,BLOCK,BLOCK),3 ,4)
 
          
     def loop(self):
         while not self.end:
+            self.clock.tick(60)
             if self.tetris.piece == None:
                 self.tetris.new_piece()
             self.events()
