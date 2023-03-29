@@ -1,4 +1,5 @@
 from tetris_logic.piece import Piece
+from collections import deque
 
 WIDTH = 400
 HEIGHT = 800
@@ -9,7 +10,10 @@ class Tetris:
 
     def __init__(self):
         self.piece = None
-        self.map_pieces = [[0 for x in range(10)] for i in range(20)]
+        self.map_pieces = deque([[0 for x in range(10)] for i in range(20)])
+        self.end = False
+        self.score = 0
+
     
     def new_piece(self):
         self.piece = Piece(160,40)
@@ -48,10 +52,21 @@ class Tetris:
             
         return False
     
+    def full_lines(self):
+        for i in range(20):
+            if 0 not in self.map_pieces[i]:
+                self.score += 1
+                del self.map_pieces[i]
+                self.map_pieces.appendleft([0 for i in range(10)])
+
+
+    
     def map_piece(self):
         coordinates = self.piece.piece_info()
         for coordinate in coordinates:
             x = coordinate[0]+(self.piece.x//40)
             y = coordinate[1]+(self.piece.y//40)
             self.map_pieces[y][x] = self.piece.color
-        print(self.map_pieces)
+
+
+

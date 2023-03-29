@@ -49,7 +49,6 @@ class Piece:
 
     def rotate(self):
         if len(self.pieces[self.piece])-1 == self.rotation:
-            print('liikaa')
             self.rotation = 0
         else:
             self.rotation += 1
