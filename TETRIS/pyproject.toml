@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "tetris"
+name = "TETRIS"
 version = "0.1.0"
 description = ""
 authors = ["Kalle Hahl <kalle.hahl@hotmail.com>"]
