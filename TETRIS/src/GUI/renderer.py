@@ -5,8 +5,9 @@ WIDTH = 400
 HEIGHT = 800
 BLOCK = 40
 
-BACKROUND = (99,99,99)
-LINE = (128,128,128)
+BACKROUND = (99, 99, 99)
+LINE = (128, 128, 128)
+
 
 class Renderer:
 
@@ -19,25 +20,35 @@ class Renderer:
         self.screen.fill(BACKROUND)
 
     def render_grid(self):
-        for x in range(0,WIDTH,BLOCK):
+        for x in range(0, WIDTH, BLOCK):
             pygame.draw.line(self.screen, (LINE), (x, 0), (x, HEIGHT))
         for y in range(0, HEIGHT, BLOCK):
-            pygame.draw.line(self.screen, (LINE), (0,y), (WIDTH, y))
-    
+            pygame.draw.line(self.screen, (LINE), (0, y), (WIDTH, y))
+
     def render_piece(self):
         piece_coordinates = self.tetris.piece.piece_info()
         for coordinate in piece_coordinates:
-            pygame.draw.rect(self.screen, self.tetris.piece.color, (self.tetris.piece.x+coordinate[0]*BLOCK, self.tetris.piece.y+coordinate[1]*BLOCK,BLOCK,BLOCK),0,4)
-            pygame.draw.rect(self.screen, (0,0,0), (self.tetris.piece.x+coordinate[0]*BLOCK, self.tetris.piece.y+coordinate[1]*BLOCK,BLOCK,BLOCK),3,4)
-    
+            pygame.draw.rect(self.screen, self.tetris.piece.color,
+                             (self.tetris.piece.x_coordinate + coordinate[0]*BLOCK,
+                              self.tetris.piece.y_coordinate +
+                              coordinate[1]*BLOCK,
+                              BLOCK, BLOCK), 0, 4)
+            pygame.draw.rect(self.screen, (0, 0, 0),
+                             (self.tetris.piece.x_coordinate + coordinate[0]*BLOCK,
+                             self.tetris.piece.y_coordinate +
+                                 coordinate[1]*BLOCK,
+                             BLOCK, BLOCK), 3, 4)
+
     def render_previous_pieces(self):
         for y in range(20):
             for x in range(10):
                 color = self.tetris.map_pieces[y][x]
                 if color == 0:
                     continue
-                pygame.draw.rect(self.screen, color, (BLOCK*x,BLOCK*y,BLOCK,BLOCK),0,4)
-                pygame.draw.rect(self.screen, (0,0,0), (BLOCK*x,BLOCK*y,BLOCK,BLOCK),3 ,4)
+                pygame.draw.rect(self.screen, color,
+                                 (BLOCK*x, BLOCK*y, BLOCK, BLOCK), 0, 4)
+                pygame.draw.rect(self.screen, (0, 0, 0),
+                                 (BLOCK*x, BLOCK*y, BLOCK, BLOCK), 3, 4)
 
     def render_all(self, bool):
         self.render_backround()
@@ -48,4 +59,3 @@ class Renderer:
             self.button.resume()
 
         pygame.display.update()
-

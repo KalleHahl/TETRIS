@@ -4,6 +4,7 @@ from GUI.game_loop import Game
 WIDTH = 400
 HEIGHT = 800
 
+
 def main():
     display = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption('Tetris')
