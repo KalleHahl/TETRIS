@@ -9,11 +9,11 @@ def format(ctx):
     ctx.run('autopep8 --in-place --recursive src')
 
 @task
-def pylint(ctx):
+def lint(ctx):
     ctx.run('pylint src')
 
 @task
-def pytest(ctx):
+def test(ctx):
     ctx.run('pytest src')
 
 @task
