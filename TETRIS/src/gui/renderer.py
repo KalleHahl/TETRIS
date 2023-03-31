@@ -1,5 +1,5 @@
 import pygame
-from buttons.buttons import Buttons
+from src.gui.buttons.buttons import Buttons
 
 WIDTH = 400
 HEIGHT = 800
@@ -18,8 +18,6 @@ class Renderer:
 
     def render_backround(self):
         self.screen.fill(BACKROUND)
-
-    def render_grid(self):
         for x in range(0, WIDTH, BLOCK):
             pygame.draw.line(self.screen, (LINE), (x, 0), (x, HEIGHT))
         for y in range(0, HEIGHT, BLOCK):
@@ -42,7 +40,7 @@ class Renderer:
     def render_previous_pieces(self):
         for y in range(20):
             for x in range(10):
-                color = self.tetris.map_pieces[y][x]
+                color = self.tetris.board[y][x]
                 if color == 0:
                     continue
                 pygame.draw.rect(self.screen, color,
@@ -50,12 +48,11 @@ class Renderer:
                 pygame.draw.rect(self.screen, (0, 0, 0),
                                  (BLOCK*x, BLOCK*y, BLOCK, BLOCK), 3, 4)
 
-    def render_all(self, bool):
+    def render_all(self, pause):
         self.render_backround()
-        self.render_grid()
         self.render_piece()
         self.render_previous_pieces()
-        if bool:
+        if pause:
             self.button.resume()
 
         pygame.display.update()

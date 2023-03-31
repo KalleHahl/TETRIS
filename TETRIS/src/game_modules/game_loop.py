@@ -1,7 +1,7 @@
 import pygame
 from tetris_logic.tetris import Tetris
-from GUI.renderer import Renderer
-from GUI.event_queue import EventQueue
+from src.gui.renderer import Renderer
+from src.game_modules.event_queue import EventQueue
 
 
 BLOCK = 40
@@ -39,13 +39,13 @@ class Game:
                     if event.key == pygame.K_UP:
                         self.tetris.rotate()
                     if event.key == pygame.K_DOWN:
-                        self.tetris.move_down(BLOCK)
+                        self.tetris.move_down()
                 if event.key == pygame.K_SPACE:
                     self.paused = not self.paused
 
             if not self.paused:
                 if event.type == self.event.delay:
-                    self.tetris.move_down(BLOCK)
+                    self.tetris.move_down()
 
     def start(self):
         while not self.end:

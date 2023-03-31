@@ -1,6 +1,6 @@
 
 from collections import deque
-from tetris_logic.piece import Piece
+from src.tetris_logic.piece import Piece
 
 WIDTH = 400
 HEIGHT = 800
@@ -12,12 +12,12 @@ class Tetris:
 
     def __init__(self):
         self.piece = None
-        self.map_pieces = deque([[0 for k in range(10)] for i in range(20)])
+        self.board = deque([[0 for k in range(10)] for i in range(20)])
         self.end = False
         self.score = 0
 
     def new_piece(self):
-        self.piece = Piece(160, 40)
+        self.piece = Piece(160, 0)
 
     def move_side(self, x_coordinate):
         old_x = self.piece.x_coordinate
@@ -25,13 +25,13 @@ class Tetris:
         if self.out_of_bounds():
             self.piece.x_coordinate = old_x
 
-    def move_down(self, y_coordinate):
+    def move_down(self):
         old_y = self.piece.y_coordinate
-        self.piece.y_coordinate += y_coordinate
+        self.piece.y_coordinate += BLOCK
         if self.out_of_bounds():
             self.piece.y_coordinate = old_y
             self.piece.landed = True
-            self.map_piece()
+            self.add_piece_to_board()
             return
 
     def rotate(self):
@@ -45,23 +45,26 @@ class Tetris:
         for coordinate in coordinates:
             y_coordinate = BLOCK*coordinate[1]+self.piece.y_coordinate
             x_coordinate = BLOCK*coordinate[0]+self.piece.x_coordinate
+            
+            if y_coordinate < 0:
+                continue
 
             if x_coordinate > WIDTH-BLOCK or x_coordinate < 0 or y_coordinate > HEIGHT-BLOCK \
-                    or self.map_pieces[y_coordinate//BLOCK][x_coordinate//BLOCK] != 0:
+                    or self.board[y_coordinate//BLOCK][x_coordinate//BLOCK] != 0:
                 return True
 
         return False
 
     def full_lines(self):
         for i in range(20):
-            if 0 not in self.map_pieces[i]:
+            if 0 not in self.board[i]:
                 self.score += 1
-                del self.map_pieces[i]
-                self.map_pieces.appendleft([0 for i in range(10)])
+                del self.board[i]
+                self.board.appendleft([0 for i in range(10)])
 
-    def map_piece(self):
+    def add_piece_to_board(self):
         coordinates = self.piece.piece_info()
         for coordinate in coordinates:
             x_coordinate = coordinate[0]+(self.piece.x_coordinate//40)
             y_coordinate = coordinate[1]+(self.piece.y_coordinate//40)
-            self.map_pieces[y_coordinate][x_coordinate] = self.piece.color
+            self.board[y_coordinate][x_coordinate] = self.piece.color
