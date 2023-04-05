@@ -13,6 +13,9 @@ class Buttons:
     def resume(self):
         return self.template('Resume')
 
+    def game_over(self):
+        return self.template('Game over')
+    
     def template(self, text):
         font = pygame.font.Font('freesansbold.ttf', 32)
         text_1 = font.render(text, True, (0, 0, 0), (255, 255, 255))

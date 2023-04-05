@@ -48,11 +48,13 @@ class Renderer:
                 pygame.draw.rect(self.screen, (0, 0, 0),
                                  (BLOCK*x, BLOCK*y, BLOCK, BLOCK), 3, 4)
 
-    def render_all(self, pause):
+    def render_all(self, pause, end):
         self.render_backround()
         self.render_piece()
         self.render_previous_pieces()
         if pause:
             self.button.resume()
+        if end:
+            self.button.game_over()
 
         pygame.display.update()
