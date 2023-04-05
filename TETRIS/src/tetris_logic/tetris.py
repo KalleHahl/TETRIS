@@ -17,7 +17,11 @@ class Tetris:
         self.score = 0
 
     def new_piece(self):
+        old_piece = self.piece
         self.piece = Piece(160, 0)
+        if self.out_of_bounds():
+            self.end = True
+            self.piece = old_piece
 
     def move_side(self, x_coordinate):
         old_x = self.piece.x_coordinate
@@ -31,6 +35,7 @@ class Tetris:
         if self.out_of_bounds():
             self.piece.y_coordinate = old_y
             self.piece.landed = True
+
             self.add_piece_to_board()
             return
 
@@ -65,6 +70,8 @@ class Tetris:
     def add_piece_to_board(self):
         coordinates = self.piece.piece_info()
         for coordinate in coordinates:
-            x_coordinate = coordinate[0]+(self.piece.x_coordinate//40)
-            y_coordinate = coordinate[1]+(self.piece.y_coordinate//40)
+            x_coordinate = coordinate[0]+(self.piece.x_coordinate//BLOCK)
+            y_coordinate = coordinate[1]+(self.piece.y_coordinate//BLOCK)
+            if y_coordinate < 0:
+                continue
             self.board[y_coordinate][x_coordinate] = self.piece.color
