@@ -1,5 +1,5 @@
 import pygame
-from tetris_logic.tetris import Tetris
+from src.tetris_logic.tetris import Tetris
 from src.gui.renderer import Renderer
 from src.game_modules.event_queue import EventQueue
 
@@ -43,9 +43,12 @@ class Game:
                     if event.key == pygame.K_DOWN:
                         self.tetris.move_down()
                 if event.key == pygame.K_SPACE:
-                    self.paused = not self.paused
+                    if self.end:
+                        self.__init__(self.screen)
+                    else:
+                        self.paused = not self.paused
 
-            if not self.paused or not self.end:
+            if not self.paused and not self.end:
                 if event.type == self.event.delay:
                     self.tetris.move_down()
 

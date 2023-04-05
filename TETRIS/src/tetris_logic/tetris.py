@@ -50,7 +50,7 @@ class Tetris:
         for coordinate in coordinates:
             y_coordinate = BLOCK*coordinate[1]+self.piece.y_coordinate
             x_coordinate = BLOCK*coordinate[0]+self.piece.x_coordinate
-            
+
             if y_coordinate < 0:
                 continue
 
