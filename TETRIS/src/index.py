@@ -1,5 +1,5 @@
 import pygame
-from game_modules.game_loop import Game
+from src.game_modules.game_loop import Game
 
 WIDTH = 400
 HEIGHT = 800

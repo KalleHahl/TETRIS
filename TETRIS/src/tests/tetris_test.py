@@ -17,27 +17,27 @@ class TetrisTest(unittest.TestCase):
     def test_new_piece_coordinates(self):
         tup = (self.game.piece.x_coordinate, self.game.piece.y_coordinate)
         self.assertEqual(tup, (160, 0))
-    
+
     def test_move_left(self):
         self.game.move_side(-BLOCK)
         tup = (self.game.piece.x_coordinate, self.game.piece.y_coordinate)
-        self.assertEqual(tup,(120,0))
+        self.assertEqual(tup, (120, 0))
 
     def test_move_right(self):
         self.game.move_side(BLOCK)
         tup = (self.game.piece.x_coordinate, self.game.piece.y_coordinate)
-        self.assertEqual(tup,(200,0))
-    
+        self.assertEqual(tup, (200, 0))
+
     def test_move_side_not_allowed(self):
         self.game.piece.x_coordinate = 0
         self.game.move_side(-BLOCK)
         self.assertEqual(self.game.piece.x_coordinate, 0)
-    
+
     def test_move_down(self):
         self.game.move_down()
         tup = (self.game.piece.x_coordinate, self.game.piece.y_coordinate)
-        self.assertEqual(tup, (160,40))
-    
+        self.assertEqual(tup, (160, 40))
+
     def test_landed(self):
         # test with T
         self.game.piece.piece = 'T'
@@ -71,22 +71,19 @@ class TetrisTest(unittest.TestCase):
         self.game.new_piece()
         self.game.piece.x_coordinate = -40
         self.assertTrue(self.game.out_of_bounds())
-        
+
         self.game.new_piece()
         self.game.piece.x_coordinate = 400
         self.assertTrue(self.game.out_of_bounds())
-        
+
         self.game.new_piece()
         self.game.piece.y_coordinate = 800
-        self.assertTrue(self.game.out_of_bounds())    
-    
+        self.assertTrue(self.game.out_of_bounds())
+
     def test_full_lines(self):
         initial = self.game.board[19]
-        self.game.board[19] = [(0,0,0) for i in range(10)]
+        self.game.board[19] = [(0, 0, 0) for i in range(10)]
         self.game.full_lines()
         new = self.game.board[19]
         self.assertEqual(self.game.score, 1)
         self.assertEqual(new, initial)
-
-
-
