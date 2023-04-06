@@ -16,7 +16,7 @@ class Renderer:
         self.tetris = tetris
         self.button = Buttons(self.screen)
 
-    def render_backround(self):
+    def render_backround_game(self):
         self.screen.fill(BACKROUND)
         for x in range(0, WIDTH, BLOCK):
             pygame.draw.line(self.screen, (LINE), (x, 0), (x, HEIGHT))
@@ -50,7 +50,7 @@ class Renderer:
                                  (BLOCK*x, BLOCK*y, BLOCK, BLOCK), 3, 4)
 
     def render_all(self, pause, end):
-        self.render_backround()
+        self.render_backround_game()
         self.render_piece()
         self.render_previous_pieces()
         if pause:
@@ -58,4 +58,9 @@ class Renderer:
         if end:
             self.button.game_over()
 
+        pygame.display.update()
+
+    def render_menu(self):
+        self.screen.fill(BACKROUND)
+        self.button.start()
         pygame.display.update()

@@ -10,7 +10,7 @@ BLOCK = 40
 class Game:
 
     def __init__(self, screen):
-
+        self.state = 'menu'
         self.screen = screen
         self.quit = False
         self.end = False
@@ -28,7 +28,7 @@ class Game:
             self.tetris.new_piece()
         self.tetris.full_lines()
 
-    def events(self):
+    def game_events(self):
         for event in self.event.get():
             if event.type == pygame.QUIT:
                 self.quit = True
@@ -51,13 +51,26 @@ class Game:
             if not self.paused and not self.end:
                 if event.type == self.event.delay:
                     self.tetris.move_down()
+    
+    def menu_events(self):
+        for event in self.event.get():
+            if event.type == pygame.QUIT:
+                self.quit = True
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    self.state = 'game'
 
     def start(self):
         while not self.quit:
             self.clock.tick(60)
-            self.events()
-            if not self.tetris.piece:
-                self.tetris.new_piece()
-            if not self.end:
-                self.update()
-            self.renderer.render_all(self.paused, self.end)
+            if self.state == 'game':
+                self.game_events()
+                if not self.tetris.piece:
+                    self.tetris.new_piece()
+                if not self.end:
+                    self.update()
+                self.renderer.render_all(self.paused, self.end)
+            elif self.state == 'menu':
+                self.menu_events()
+                self.renderer.render_menu()
+    
