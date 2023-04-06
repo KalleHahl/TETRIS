@@ -35,7 +35,6 @@ class Tetris:
         if self.out_of_bounds():
             self.piece.y_coordinate = old_y
             self.piece.landed = True
-
             self.add_piece_to_board()
             return
 

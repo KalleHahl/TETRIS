@@ -9,7 +9,7 @@ BLOCK = 40
 
 class Game:
 
-    def __init__(self, screen, tetris, renderer, event_queue):
+    def __init__(self, screen, tetris, renderer, event_queue, clock):
         self.state = 'menu'
         self.screen = screen
         self.quit = False
@@ -18,7 +18,7 @@ class Game:
         self.tetris = tetris
         self.renderer = renderer
         self.event = event_queue
-        self.clock = pygame.time.Clock()
+        self.clock = clock
 
     def update(self):
         if self.tetris.end:

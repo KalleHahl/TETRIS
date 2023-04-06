@@ -3,6 +3,7 @@ from src.game_modules.game_loop import Game
 from src.tetris_logic.tetris import Tetris
 from src.gui.renderer import Renderer
 from src.game_modules.event_queue import EventQueue
+from src.game_modules.clock import Clock
 
 WIDTH = 700
 HEIGHT = 800
@@ -14,7 +15,8 @@ def main():
     tetris = Tetris()
     renderer = Renderer(display, tetris)
     event_queue = EventQueue()
-    loop = Game(display,tetris,renderer,event_queue)
+    clock = Clock()
+    loop = Game(display, tetris, renderer, event_queue, clock)
     pygame.init()
     loop.start()
 
