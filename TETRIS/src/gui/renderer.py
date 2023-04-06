@@ -22,6 +22,7 @@ class Renderer:
             pygame.draw.line(self.screen, (LINE), (x, 0), (x, HEIGHT))
         for y in range(0, HEIGHT, BLOCK):
             pygame.draw.line(self.screen, (LINE), (0, y), (WIDTH, y))
+        pygame.draw.line(self.screen, (0,0,0), (WIDTH, 0), (WIDTH,HEIGHT), 2)
 
     def render_piece(self):
         piece_coordinates = self.tetris.piece.piece_info()

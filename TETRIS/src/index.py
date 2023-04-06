@@ -1,7 +1,7 @@
 import pygame
 from src.game_modules.game_loop import Game
 
-WIDTH = 400
+WIDTH = 700
 HEIGHT = 800
 
 
