@@ -15,7 +15,7 @@ class Buttons:
         return self.template('Press space to resume!', BOARD_WIDTH//2, HEIGHT//2)
 
     def game_over(self):
-        return self.template('Game over! Press space to go back!', BOARD_WIDTH//2, HEIGHT//2)
+        return self.template('Game over! Press space to restart!', BOARD_WIDTH//2, HEIGHT//2)
 
     def start(self):
         return self.template('Press space to start!', SCREEN_WIDTH//2,HEIGHT//2)

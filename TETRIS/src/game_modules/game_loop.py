@@ -9,15 +9,15 @@ BLOCK = 40
 
 class Game:
 
-    def __init__(self, screen):
+    def __init__(self, screen, tetris, renderer, event_queue):
         self.state = 'menu'
         self.screen = screen
         self.quit = False
         self.end = False
         self.paused = False
-        self.tetris = Tetris()
-        self.renderer = Renderer(self.screen, self.tetris)
-        self.event = EventQueue()
+        self.tetris = tetris
+        self.renderer = renderer
+        self.event = event_queue
         self.clock = pygame.time.Clock()
 
     def update(self):
@@ -44,7 +44,8 @@ class Game:
                         self.tetris.move_down()
                 if event.key == pygame.K_SPACE:
                     if self.end:
-                        self.__init__(self.screen)
+                        self.tetris.wipe()
+                        self.end = False
                     else:
                         self.paused = not self.paused
 

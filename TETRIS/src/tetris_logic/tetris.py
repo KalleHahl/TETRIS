@@ -75,3 +75,6 @@ class Tetris:
             if y_coordinate < 0:
                 continue
             self.board[y_coordinate][x_coordinate] = self.piece.color
+
+    def wipe(self):
+        self.__init__()
