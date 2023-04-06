@@ -8,3 +8,6 @@
 * Added a deque that acts as a board to store locations of pieces in the tetris board
 * Added a pause feature by pressing space
 * Documentation
+## Week 4
+* Game now ends if pieces reach the top
+* Game can be restarted when it ends
