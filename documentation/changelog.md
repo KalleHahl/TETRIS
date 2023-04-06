@@ -11,3 +11,6 @@
 ## Week 4
 * Game now ends if pieces reach the top
 * Game can be restarted when it ends
+* Crude version of main menu
+* Screen is now wider for future additions, board stayed the same size
+* Added class or clock
