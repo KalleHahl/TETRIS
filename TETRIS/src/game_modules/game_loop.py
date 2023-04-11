@@ -46,11 +46,10 @@ class Game:
                         self.end = False
                     else:
                         self.paused = not self.paused
-            
+
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN:
                     self.move_down_fast = False
-
 
             if not self.paused and not self.end and self.tetris.piece:
                 if event.type == self.event.delay:
@@ -59,7 +58,7 @@ class Game:
                 if event.type == self.event.move_down_fast:
                     if self.move_down_fast:
                         self.tetris.move_down()
-    
+
     def menu_events(self):
         for event in self.event.get():
             if event.type == pygame.QUIT:
@@ -81,4 +80,3 @@ class Game:
             elif self.state == 'menu':
                 self.menu_events()
                 self.renderer.render_menu()
-    

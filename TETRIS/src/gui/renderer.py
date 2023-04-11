@@ -1,9 +1,10 @@
 import pygame
 from src.gui.buttons.buttons import Buttons
 
-WIDTH = 400
-HEIGHT = 800
+BOARD_WIDTH = 400
+BOARD_HEIGHT = 800
 BLOCK = 40
+
 
 BACKROUND = (99, 99, 99)
 LINE = (128, 128, 128)
@@ -18,16 +19,15 @@ class Renderer:
 
     def render_backround_game(self):
         self.screen.fill(BACKROUND)
-        for x in range(0, WIDTH, BLOCK):
-            pygame.draw.line(self.screen, (LINE), (x, 0), (x, HEIGHT))
-        for y in range(0, HEIGHT, BLOCK):
-            pygame.draw.line(self.screen, (LINE), (0, y), (WIDTH, y))
+        for x in range(0, BOARD_WIDTH, BLOCK):
+            pygame.draw.line(self.screen, (LINE), (x, 0), (x, BOARD_HEIGHT))
+        for y in range(0, BOARD_HEIGHT, BLOCK):
+            pygame.draw.line(self.screen, (LINE), (0, y), (BOARD_WIDTH, y))
         pygame.draw.line(self.screen, (0, 0, 0),
-                         (WIDTH, 0), (WIDTH, HEIGHT), 2)
+                         (BOARD_WIDTH, 0), (BOARD_WIDTH, BOARD_HEIGHT), 2)
 
     def render_piece(self):
         piece_coordinates = self.tetris.piece.piece_info()
-        next_coordinates = self.tetris.next_piece.piece_info()
         for coordinate in piece_coordinates:
             pygame.draw.rect(self.screen, self.tetris.piece.color,
                              (self.tetris.piece.x_coordinate + coordinate[0]*BLOCK,
@@ -39,19 +39,16 @@ class Renderer:
                              self.tetris.piece.y_coordinate +
                                  coordinate[1]*BLOCK,
                              BLOCK, BLOCK), 3, 4)
-            
+
+    def render_next_piece(self):
+        next_coordinates = self.tetris.next_piece.piece_info()
         for coordinate in next_coordinates:
             pygame.draw.rect(self.screen, self.tetris.next_piece.color,
-                             (self.tetris.next_piece.x_coordinate + 400 + coordinate[0]*BLOCK,
-                              self.tetris.next_piece.y_coordinate + 400 +
-                              coordinate[1]*BLOCK,
+                             (525 + coordinate[0]*BLOCK, 200 + coordinate[1]*BLOCK,
                               BLOCK, BLOCK), 0, 4)
             pygame.draw.rect(self.screen, (0, 0, 0),
-                             (self.tetris.next_piece.x_coordinate + 400 + coordinate[0]*BLOCK,
-                             self.tetris.next_piece.y_coordinate + 400 +
-                                 coordinate[1]*BLOCK,
+                             (525 + coordinate[0]*BLOCK, 200 + coordinate[1]*BLOCK,
                              BLOCK, BLOCK), 3, 4)
-
 
     def render_previous_pieces(self):
         for y in range(20):
@@ -67,7 +64,11 @@ class Renderer:
     def render_all(self, pause, end):
         self.render_backround_game()
         self.render_piece()
+        self.render_next_piece()
         self.render_previous_pieces()
+        self.button.next_piece()
+        self.button.score(self.tetris.score)
+
         if pause:
             self.button.resume()
         if end:
