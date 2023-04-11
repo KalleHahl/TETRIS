@@ -14,3 +14,5 @@
 * Crude version of main menu
 * Screen is now wider for future additions, board stayed the same size
 * Added class or clock
+* Added rendering of next piece
+* Added current score rendering
