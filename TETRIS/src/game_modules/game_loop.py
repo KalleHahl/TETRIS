@@ -1,8 +1,4 @@
 import pygame
-from src.tetris_logic.tetris import Tetris
-from src.gui.renderer import Renderer
-from src.game_modules.event_queue import EventQueue
-
 
 BLOCK = 40
 

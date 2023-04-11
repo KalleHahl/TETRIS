@@ -1,7 +1,5 @@
 import unittest
-from collections import deque
 from src.tetris_logic.tetris import Tetris
-from src.tetris_logic.piece import Piece
 
 WIDTH = 400
 HEIGHT = 800
