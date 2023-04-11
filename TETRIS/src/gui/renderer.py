@@ -27,6 +27,7 @@ class Renderer:
 
     def render_piece(self):
         piece_coordinates = self.tetris.piece.piece_info()
+        next_coordinates = self.tetris.next_piece.piece_info()
         for coordinate in piece_coordinates:
             pygame.draw.rect(self.screen, self.tetris.piece.color,
                              (self.tetris.piece.x_coordinate + coordinate[0]*BLOCK,
@@ -38,6 +39,19 @@ class Renderer:
                              self.tetris.piece.y_coordinate +
                                  coordinate[1]*BLOCK,
                              BLOCK, BLOCK), 3, 4)
+            
+        for coordinate in next_coordinates:
+            pygame.draw.rect(self.screen, self.tetris.next_piece.color,
+                             (self.tetris.next_piece.x_coordinate + 400 + coordinate[0]*BLOCK,
+                              self.tetris.next_piece.y_coordinate + 400 +
+                              coordinate[1]*BLOCK,
+                              BLOCK, BLOCK), 0, 4)
+            pygame.draw.rect(self.screen, (0, 0, 0),
+                             (self.tetris.next_piece.x_coordinate + 400 + coordinate[0]*BLOCK,
+                             self.tetris.next_piece.y_coordinate + 400 +
+                                 coordinate[1]*BLOCK,
+                             BLOCK, BLOCK), 3, 4)
+
 
     def render_previous_pieces(self):
         for y in range(20):

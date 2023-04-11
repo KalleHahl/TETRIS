@@ -11,6 +11,7 @@ BLOCK = 40
 class Tetris:
 
     def __init__(self):
+        self.next_piece = Piece(160,0)
         self.piece = None
         self.board = deque([[0 for k in range(10)] for i in range(20)])
         self.end = False
@@ -18,10 +19,11 @@ class Tetris:
 
     def new_piece(self):
         old_piece = self.piece
-        self.piece = Piece(160, 0)
+        self.piece = self.next_piece
         if self.out_of_bounds():
             self.end = True
             self.piece = old_piece
+        self.next_piece = Piece(160,0)
 
     def move_side(self, x_coordinate):
         old_x = self.piece.x_coordinate
