@@ -3,6 +3,7 @@ import pygame
 from src.tetris_logic.tetris import Tetris
 from src.game_modules.game_loop import Game
 
+
 class StubClock:
     def tick(self, fps):
         pass
@@ -29,8 +30,7 @@ class StubRenderer:
     def render(self):
         pass
 
+
 class TestGameLoop(unittest.TestCase):
     def setUp(self):
         self.tetris = Tetris()
-    
-    

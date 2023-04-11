@@ -87,9 +87,9 @@ class TetrisTest(unittest.TestCase):
         self.assertEqual(new, initial)
 
     def test_negative_y_coordinate_is_skipped_in_add_piece_to_board(self):
-        self.game.piece.color = (0,0,0)
+        self.game.piece.color = (0, 0, 0)
         self.game.add_piece_to_board()
-        test = (0,0,0) not in self.game.board[19]
+        test = (0, 0, 0) not in self.game.board[19]
         self.assertTrue(test)
 
     def test_new_piece_ends_game(self):

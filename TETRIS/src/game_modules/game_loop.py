@@ -15,6 +15,7 @@ class Game:
         self.renderer = renderer
         self.event = event_queue
         self.clock = clock
+        self.move_down_fast = False
 
     def update(self):
         if self.tetris.end:
@@ -28,6 +29,7 @@ class Game:
         for event in self.event.get():
             if event.type == pygame.QUIT:
                 self.quit = True
+
             if event.type == pygame.KEYDOWN:
                 if not self.paused:
                     if event.key == pygame.K_LEFT:
@@ -37,17 +39,26 @@ class Game:
                     if event.key == pygame.K_UP:
                         self.tetris.rotate()
                     if event.key == pygame.K_DOWN:
-                        self.tetris.move_down()
+                        self.move_down_fast = True
                 if event.key == pygame.K_SPACE:
                     if self.end:
                         self.tetris.wipe()
                         self.end = False
                     else:
                         self.paused = not self.paused
+            
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_DOWN:
+                    self.move_down_fast = False
 
-            if not self.paused and not self.end:
+
+            if not self.paused and not self.end and self.tetris.piece:
                 if event.type == self.event.delay:
-                    self.tetris.move_down()
+                    if not self.move_down_fast:
+                        self.tetris.move_down()
+                if event.type == self.event.move_down_fast:
+                    if self.move_down_fast:
+                        self.tetris.move_down()
     
     def menu_events(self):
         for event in self.event.get():
