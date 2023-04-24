@@ -1,5 +1,6 @@
 
 # Tetris
+![CI Badge](https://github.com/KalleHahl/ot-harjoitustyo/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/KalleHahl/ot-harjoitustyo/branch/main/graph/badge.svg?token=D9XSGLPQI0)](https://codecov.io/gh/KalleHahl/ot-harjoitustyo)
 Tetris game with leaderboards
 ## Installation:
 Clone this repository to your desired directory
