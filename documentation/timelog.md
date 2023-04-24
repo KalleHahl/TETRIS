@@ -8,4 +8,6 @@
 | 31.3 | 3 h | Refactoring, wrote tests etc |
 | 6.4 | 5 h | Added new features and tests |
 | 11.4 | 3 h | Added new rendering features |
-| total | 21 h 30 min | |
+| 17.4 | 6 h | Fixed rotations, added crude version of wall kicks |
+| 24.4 | 3 h | changed wall kicks a bit, cleaning code, wrote tests |
+| total | 30 h 30 min | |

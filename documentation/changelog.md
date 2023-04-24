@@ -16,3 +16,5 @@
 * Added class or clock
 * Added rendering of next piece
 * Added current score rendering
+## Week 5
+* Crude version of wallkicks, may need to change it a bit
