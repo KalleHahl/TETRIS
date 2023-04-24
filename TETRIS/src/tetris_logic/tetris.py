@@ -51,10 +51,9 @@ class Tetris:
                 new_x = old_offsets[index][0]-offsets[0]
                 self.piece.x_coordinate = old_x + new_x
                 new_y = old_offsets[index][1]-offsets[1]
-                
+
                 self.piece.y_coordinate = old_y + new_y
-                print(offsets[0], offsets[1])
-                print(self.piece.x_coordinate, self.piece.y_coordinate)
+
                 if not self.out_of_bounds():
                     break
             else:

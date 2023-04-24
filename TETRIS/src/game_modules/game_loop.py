@@ -27,28 +27,28 @@ class Game:
 
     def game_events(self):
         for event in self.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.constants.QUIT:
                 self.quit = True
 
-            if event.type == pygame.KEYDOWN:
+            if event.type == pygame.constants.KEYDOWN:
                 if not self.paused:
-                    if event.key == pygame.K_LEFT:
+                    if event.key == pygame.constants.K_LEFT:
                         self.tetris.move_side(0-BLOCK)
-                    if event.key == pygame.K_RIGHT:
+                    if event.key == pygame.constants.K_RIGHT:
                         self.tetris.move_side(BLOCK)
-                    if event.key == pygame.K_UP:
+                    if event.key == pygame.constants.K_UP:
                         self.tetris.rotate()
-                    if event.key == pygame.K_DOWN:
+                    if event.key == pygame.constants.K_DOWN:
                         self.move_down_fast = True
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.constants.K_SPACE:
                     if self.end:
                         self.tetris.wipe()
                         self.end = False
                     else:
                         self.paused = not self.paused
 
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_DOWN:
+            if event.type == pygame.constants.KEYUP:
+                if event.key == pygame.constants.K_DOWN:
                     self.move_down_fast = False
 
             if not self.paused and not self.end and self.tetris.piece:
@@ -61,10 +61,10 @@ class Game:
 
     def menu_events(self):
         for event in self.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.constants.QUIT:
                 self.quit = True
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
+            elif event.type == pygame.constants.KEYDOWN:
+                if event.key == pygame.constants.K_SPACE:
                     self.state = 'game'
 
     def start(self):
