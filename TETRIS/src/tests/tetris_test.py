@@ -1,5 +1,6 @@
 import unittest
 from src.tetris_logic.tetris import Tetris
+from src.tetris_logic.piece import pieces
 
 WIDTH = 400
 HEIGHT = 800
@@ -14,17 +15,17 @@ class TetrisTest(unittest.TestCase):
 
     def test_new_piece_coordinates(self):
         tup = (self.game.piece.x_coordinate, self.game.piece.y_coordinate)
-        self.assertEqual(tup, (160, 0))
+        self.assertEqual(tup, (160, 40))
 
     def test_move_left(self):
         self.game.move_side(-BLOCK)
         tup = (self.game.piece.x_coordinate, self.game.piece.y_coordinate)
-        self.assertEqual(tup, (120, 0))
+        self.assertEqual(tup, (120, 40))
 
     def test_move_right(self):
         self.game.move_side(BLOCK)
         tup = (self.game.piece.x_coordinate, self.game.piece.y_coordinate)
-        self.assertEqual(tup, (200, 0))
+        self.assertEqual(tup, (200, 40))
 
     def test_move_side_not_allowed(self):
         self.game.piece.x_coordinate = 0
@@ -34,7 +35,7 @@ class TetrisTest(unittest.TestCase):
     def test_move_down(self):
         self.game.move_down()
         tup = (self.game.piece.x_coordinate, self.game.piece.y_coordinate)
-        self.assertEqual(tup, (160, 40))
+        self.assertEqual(tup, (160, 80))
 
     def test_landed(self):
         # test with T
@@ -52,7 +53,7 @@ class TetrisTest(unittest.TestCase):
         new_coordinates = self.game.piece.piece_info()
 
         self.assertEqual(new_rotation, 1)
-        self.assertEqual(new_coordinates, self.game.piece.pieces['T'][1])
+        self.assertEqual(new_coordinates, pieces['T'][1])
     """
     def test_cannot_rotate(self):
         # test with I 

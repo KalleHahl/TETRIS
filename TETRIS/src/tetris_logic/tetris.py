@@ -11,7 +11,7 @@ BLOCK = 40
 class Tetris:
 
     def __init__(self):
-        self.next_piece = Piece(160, 0)
+        self.next_piece = Piece(160, 40)
         self.piece = None
         self.board = deque([[0 for k in range(10)] for i in range(20)])
         self.end = False
@@ -23,7 +23,7 @@ class Tetris:
         if self.out_of_bounds():
             self.end = True
             self.piece = old_piece
-        self.next_piece = Piece(160, 0)
+        self.next_piece = Piece(160, 40)
 
     def move_side(self, x_coordinate):
         old_x = self.piece.x_coordinate
@@ -41,10 +41,26 @@ class Tetris:
             return
 
     def rotate(self):
+        old_x = self.piece.x_coordinate
+        old_y = self.piece.y_coordinate
         old = self.piece.rotation
+        old_offsets = self.piece.get_wall_kicks()
         self.piece.rotate()
         if self.out_of_bounds():
-            self.piece.rotation = old
+            for index, offsets in enumerate(self.piece.get_wall_kicks()):
+                new_x = old_offsets[index][0]-offsets[0]
+                self.piece.x_coordinate = old_x + new_x
+                new_y = old_offsets[index][1]-offsets[1]
+                
+                self.piece.y_coordinate = old_y + new_y
+                print(offsets[0], offsets[1])
+                print(self.piece.x_coordinate, self.piece.y_coordinate)
+                if not self.out_of_bounds():
+                    break
+            else:
+                self.piece.rotation = old
+                self.piece.x_coordinate = old_x
+                self.piece.y_coordinate = old_y
 
     def out_of_bounds(self):
         coordinates = self.piece.piece_info()
