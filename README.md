@@ -17,6 +17,29 @@ Start program
 ```cd TETRIS```
 
 ```poetry run invoke start```
+## Command-line:
+*Run these commands while in the TETRIS directory*
+
+Start program:
+
+```poetry run invoke start```
+
+Unittests:
+
+```poetry run invoke test```
+
+Coverage:
+
+```poetry run coverage-report```
+
+Open coverage report HTML in browser:
+
+```poetry run coverage-show```
+
+Pylint:
+
+```poetry run invoke lint```
+
 ## Documentation:
 * [Project definition](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/definition.md)
 * [Time-log](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/timelog.md)
