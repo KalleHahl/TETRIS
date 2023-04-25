@@ -14,6 +14,7 @@ class Tetris:
         self.board = deque([[0 for k in range(10)] for i in range(20)])
         self.end = False
         self.score = 0
+        self.speed = 750
         self.update_speed = False
 
 
@@ -90,6 +91,7 @@ class Tetris:
                 del self.board[i]
                 self.board.appendleft([0 for i in range(10)])
                 if self.score % 10 == 0:
+                    self.speed = self.speed // 2
                     self.update_speed = True
 
     def add_piece_to_board(self):
@@ -117,3 +119,4 @@ class Tetris:
     
     def wipe(self):
         self.__init__()
+        self.update_speed = True

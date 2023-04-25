@@ -1,10 +1,7 @@
 import unittest
 from src.tetris_logic.tetris import Tetris
 from src.tetris_logic.piece import pieces
-
-WIDTH = 400
-HEIGHT = 800
-BLOCK = 40
+from src.settings import *
 
 
 class TetrisTest(unittest.TestCase):
@@ -54,30 +51,23 @@ class TetrisTest(unittest.TestCase):
 
         self.assertEqual(new_rotation, 1)
         self.assertEqual(new_coordinates, pieces['T'][1])
-    """
-    def test_cannot_rotate(self):
-        # test with I 
-        self.game.piece.piece = 'I'
-        self.game.piece.x_coordinate 
-        old_coordinates = self.game.piece.piece_info()
-        self.game.piece.rotate()
-        new_coordinates = self.game.piece.piece_info()
-        self.assertEqual(self.game.piece.rotation, 0)
-        self.assertEqual(new_coordinates, old_coordinates)
-    """
+
 
     def test_out_of_bounds(self):
         self.game.new_piece()
         self.game.piece.x_coordinate = -40
-        self.assertTrue(self.game.out_of_bounds())
+        coordinates = self.game.piece.piece_info()
+        self.assertTrue(self.game.out_of_bounds(coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
         self.game.new_piece()
         self.game.piece.x_coordinate = 400
-        self.assertTrue(self.game.out_of_bounds())
+        coordinates = self.game.piece.piece_info()
+        self.assertTrue(self.game.out_of_bounds(coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
         self.game.new_piece()
         self.game.piece.y_coordinate = 800
-        self.assertTrue(self.game.out_of_bounds())
+        coordinates = self.game.piece.piece_info()
+        self.assertTrue(self.game.out_of_bounds(coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
     def test_full_lines(self):
         initial = self.game.board[19]
@@ -99,21 +89,21 @@ class TetrisTest(unittest.TestCase):
         self.game.new_piece()
         self.assertEqual(self.game.piece.piece_info(), old_piece)
         self.assertTrue(self.game.end)
-    
+
     def test_wall_kick(self):
         self.game.piece.piece = 'I'
         self.game.piece.rotation = 1
         self.game.piece.x_coordinate = 0
         self.game.rotate()
         self.assertEqual(self.game.piece.x_coordinate, 80)
-    
+
     def test_wall_kick_not_possible(self):
         self.game.piece.piece = 'I'
         self.game.piece.rotation = 1
         self.game.piece.y_coordinate = 160
         for y in range(20):
             for x in range(10):
-                if x%2 == 0:
+                if x % 2 == 0:
                     self.game.board[y][x] = 1
         self.game.rotate()
         self.assertEqual(self.game.piece.x_coordinate, 160)
@@ -121,4 +111,13 @@ class TetrisTest(unittest.TestCase):
 
     def test_y_coordinate_below0(self):
         self.game.piece.y_coordinate = -40
-        self.assertFalse(self.game.out_of_bounds())
+        coordinates = self.game.piece.piece_info()
+        self.assertEqual(self.game.piece.y_coordinate,-40)
+        self.assertFalse(self.game.out_of_bounds(coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
+
+    def test_score_updates_speed(self):
+        self.game.score = 9
+        self.game.board[19] = [(0, 0, 0) for i in range(10)]
+        self.game.full_lines()
+        self.assertEqual(self.game.score, 10)
+        self.assertEqual(self.game.speed, 750//2)
