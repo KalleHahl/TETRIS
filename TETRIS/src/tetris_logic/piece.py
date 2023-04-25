@@ -1,5 +1,6 @@
 import random
-from src.settings import *
+from src.settings import pieces, colors, wall_kick_offsets
+
 
 class Piece:
 
@@ -26,5 +27,5 @@ class Piece:
 
 class Ghost(Piece):
 
-    def __init__(self, x_coordinate, y_coordinate):
-        super().__init__(x_coordinate, y_coordinate)
+    def __init__(self):
+        pass

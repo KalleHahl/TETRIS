@@ -1,7 +1,7 @@
 import unittest
 from src.tetris_logic.tetris import Tetris
 from src.tetris_logic.piece import pieces
-from src.settings import *
+from src.settings import BLOCK, HEIGHT
 
 
 class TetrisTest(unittest.TestCase):
@@ -52,22 +52,24 @@ class TetrisTest(unittest.TestCase):
         self.assertEqual(new_rotation, 1)
         self.assertEqual(new_coordinates, pieces['T'][1])
 
-
     def test_out_of_bounds(self):
         self.game.new_piece()
         self.game.piece.x_coordinate = -40
         coordinates = self.game.piece.piece_info()
-        self.assertTrue(self.game.out_of_bounds(coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
+        self.assertTrue(self.game.out_of_bounds(
+            coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
         self.game.new_piece()
         self.game.piece.x_coordinate = 400
         coordinates = self.game.piece.piece_info()
-        self.assertTrue(self.game.out_of_bounds(coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
+        self.assertTrue(self.game.out_of_bounds(
+            coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
         self.game.new_piece()
         self.game.piece.y_coordinate = 800
         coordinates = self.game.piece.piece_info()
-        self.assertTrue(self.game.out_of_bounds(coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
+        self.assertTrue(self.game.out_of_bounds(
+            coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
     def test_full_lines(self):
         initial = self.game.board[19]
@@ -112,8 +114,9 @@ class TetrisTest(unittest.TestCase):
     def test_y_coordinate_below0(self):
         self.game.piece.y_coordinate = -40
         coordinates = self.game.piece.piece_info()
-        self.assertEqual(self.game.piece.y_coordinate,-40)
-        self.assertFalse(self.game.out_of_bounds(coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
+        self.assertEqual(self.game.piece.y_coordinate, -40)
+        self.assertFalse(self.game.out_of_bounds(
+            coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
     def test_score_updates_speed(self):
         self.game.score = 9

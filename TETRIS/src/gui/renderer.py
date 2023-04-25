@@ -1,6 +1,6 @@
 import pygame
 from src.gui.buttons.buttons import Buttons
-from src.settings import *
+from src.settings import BACKROUND, BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK
 
 
 class Renderer:

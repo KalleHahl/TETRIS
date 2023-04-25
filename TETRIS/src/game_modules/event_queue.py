@@ -12,7 +12,7 @@ class EventQueue:
 
     def get(self):
         return pygame.event.get()
-    
+
     def set_speed(self, speed):
         self.speed = speed
         pygame.time.set_timer(self.delay, self.speed)

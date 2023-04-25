@@ -1,8 +1,7 @@
 
 from collections import deque
 from src.tetris_logic.piece import Piece, Ghost
-from src.settings import *
-
+from src.settings import BLOCK, BOARD_WIDTH, HEIGHT
 
 
 class Tetris:
@@ -17,11 +16,10 @@ class Tetris:
         self.speed = 750
         self.update_speed = False
 
-
     def new_piece(self):
         old_piece = self.piece
         self.piece = self.next_piece
-        self.ghost = Ghost(self.piece.x_coordinate, self.piece.y_coordinate)
+        self.ghost = Ghost()
         coordinates = self.piece.piece_info()
         if self.out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
             self.end = True
@@ -62,7 +60,8 @@ class Tetris:
 
                 self.piece.y_coordinate = old_y + new_y
                 coordinates = self.piece.piece_info()
-                if not self.out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
+                if not self.out_of_bounds(coordinates,
+                        self.piece.x_coordinate, self.piece.y_coordinate):
                     break
             else:
                 self.piece.rotation = old
@@ -79,7 +78,7 @@ class Tetris:
                 continue
 
             if x_coordinate2 > BOARD_WIDTH-BLOCK or x_coordinate2 < 0 or y_coordinate2 > HEIGHT-BLOCK \
-                    or self.board[y_coordinate2//BLOCK][x_coordinate2//BLOCK] != 0:
+                        or self.board[y_coordinate2//BLOCK][x_coordinate2//BLOCK] != 0:
                 return True
 
         return False
@@ -116,7 +115,7 @@ class Tetris:
             if self.out_of_bounds(coordinates, self.ghost.x_coordinate, self.ghost.y_coordinate):
                 self.ghost.y_coordinate -= BLOCK
                 break
-    
+
     def wipe(self):
         self.__init__()
         self.update_speed = True

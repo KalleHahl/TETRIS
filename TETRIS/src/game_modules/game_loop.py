@@ -1,5 +1,5 @@
 import pygame
-from src.settings import *
+from src.settings import BLOCK
 
 
 class Game:
@@ -26,7 +26,6 @@ class Game:
         if self.tetris.update_speed:
             self.event.set_speed(self.tetris.speed)
             self.tetris.update_speed = False
-  
 
     def game_events(self):
         for event in self.event.get():
