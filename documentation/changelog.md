@@ -18,3 +18,5 @@
 * Added current score rendering
 ## Week 5
 * Crude version of wallkicks, may need to change it a bit
+* Added a ghost piece which shows where the piece is going to land
+* Game speed now increases every 10 points

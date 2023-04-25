@@ -13,7 +13,7 @@ The games GUI is coded using Pythons ```pygame```-library. You can also see the 
 - [x] A block stops on the bottom or if it hits another block
 - [x] A full row is cleared
 - [x] The game ends when a block hits the top edge
-* At the end of the game, the result is stored in the database under the name chosen by the user
+- At the end of the game, the result is stored in the database under the name chosen by the user
 
 ## Further improvement:
 * The ability to log in and register
