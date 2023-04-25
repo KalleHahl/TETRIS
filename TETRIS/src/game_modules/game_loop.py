@@ -1,6 +1,5 @@
 import pygame
-
-BLOCK = 40
+from src.settings import *
 
 
 class Game:
@@ -23,7 +22,11 @@ class Game:
             return
         if self.tetris.piece.landed is True:
             self.tetris.new_piece()
+        if self.tetris.update_speed:
+            self.event.set_speed()
+            self.tetris.update_speed = False
         self.tetris.full_lines()
+  
 
     def game_events(self):
         for event in self.event.get():

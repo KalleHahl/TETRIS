@@ -1,10 +1,5 @@
 import pygame
-
-BOARD_WIDTH = 400
-SCREEN_WIDTH = 700
-HEIGHT = 800
-BLOCK = 40
-
+from src.settings import *
 
 class Buttons:
 
@@ -18,13 +13,13 @@ class Buttons:
         return self.template('Game over! Press space to restart!', BOARD_WIDTH//2, HEIGHT//2)
 
     def start(self):
-        return self.template('Press space to start!', SCREEN_WIDTH//2, HEIGHT//2)
+        return self.template('Press space to start!', WIDTH//2, HEIGHT//2)
 
     def next_piece(self):
-        return self.template('Next piece', SCREEN_WIDTH-150, 100)
+        return self.template('Next piece', WIDTH-150, 100)
 
     def score(self, score):
-        return self.template(f'Score: {score}', SCREEN_WIDTH-150, 400)
+        return self.template(f'Score: {score}', WIDTH-150, 400)
 
     def template(self, text, x_coordinate, y_coordinate):
         font = pygame.font.Font('freesansbold.ttf', 20)

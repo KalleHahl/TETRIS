@@ -1,13 +1,6 @@
 import pygame
 from src.gui.buttons.buttons import Buttons
-
-BOARD_WIDTH = 400
-BOARD_HEIGHT = 800
-BLOCK = 40
-
-
-BACKROUND = (99, 99, 99)
-LINE = (128, 128, 128)
+from src.settings import *
 
 
 class Renderer:
@@ -20,9 +13,11 @@ class Renderer:
     def render_backround_game(self):
         self.screen.fill(BACKROUND)
         for x_coordinate in range(0, BOARD_WIDTH, BLOCK):
-            pygame.draw.line(self.screen, (LINE), (x_coordinate, 0), (x_coordinate, BOARD_HEIGHT))
+            pygame.draw.line(self.screen, (LINE),
+                             (x_coordinate, 0), (x_coordinate, BOARD_HEIGHT))
         for y_coordinate in range(0, BOARD_HEIGHT, BLOCK):
-            pygame.draw.line(self.screen, (LINE), (0, y_coordinate), (BOARD_WIDTH, y_coordinate))
+            pygame.draw.line(self.screen, (LINE),
+                             (0, y_coordinate), (BOARD_WIDTH, y_coordinate))
         pygame.draw.line(self.screen, (0, 0, 0),
                          (BOARD_WIDTH, 0), (BOARD_WIDTH, BOARD_HEIGHT), 2)
 
@@ -37,6 +32,16 @@ class Renderer:
             pygame.draw.rect(self.screen, (0, 0, 0),
                              (self.tetris.piece.x_coordinate + coordinate[0]*BLOCK,
                              self.tetris.piece.y_coordinate +
+                                 coordinate[1]*BLOCK,
+                             BLOCK, BLOCK), 3, 4)
+
+    def render_ghost(self):
+        piece_coordinates = self.tetris.ghost.piece_info()
+        for coordinate in piece_coordinates:
+
+            pygame.draw.rect(self.screen, (0, 0, 0),
+                             (self.tetris.ghost.x_coordinate + coordinate[0]*BLOCK,
+                             self.tetris.ghost.y_coordinate +
                                  coordinate[1]*BLOCK,
                              BLOCK, BLOCK), 3, 4)
 
@@ -64,6 +69,7 @@ class Renderer:
     def render_all(self, pause, end):
         self.render_backround_game()
         self.render_piece()
+        self.render_ghost()
         self.render_next_piece()
         self.render_previous_pieces()
         self.button.next_piece()
