@@ -57,7 +57,7 @@ class Piece:
     def __init__(self, x_coordinate, y_coordinate):
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
-        self.piece = 'I'#random.choice(list(pieces))
+        self.piece = random.choice(list(pieces))
         self.rotation = 0
         self.color = colors[self.piece]
         self.landed = False
