@@ -6,7 +6,7 @@ Tetris game with leaderboards and a very 'unique' wall kick system.
 ## Installation:
 Clone this repository to your desired directory
 
-```git clone https://github.com/KalleHahl/tiralabra```
+```git clone https://github.com/KalleHahl/ot-harjoitustyo```
 
 Install dependencies
 
