@@ -4,7 +4,7 @@ from src.tetris_logic.tetris import Tetris
 from src.gui.renderer import Renderer
 from src.game_modules.event_queue import EventQueue
 from src.game_modules.clock import Clock
-from src.settings import *
+from src.settings import WIDTH, HEIGHT
 
 
 def main():

@@ -33,33 +33,46 @@ class Game:
                 self.quit = True
 
             if event.type == pygame.constants.KEYDOWN:
-                if not self.paused:
-                    if event.key == pygame.constants.K_LEFT:
-                        self.tetris.move_side(0-BLOCK)
-                    if event.key == pygame.constants.K_RIGHT:
-                        self.tetris.move_side(BLOCK)
-                    if event.key == pygame.constants.K_UP:
-                        self.tetris.rotate()
-                    if event.key == pygame.constants.K_DOWN:
-                        self.move_down_fast = True
-                if event.key == pygame.constants.K_SPACE:
-                    if self.end:
-                        self.tetris.wipe()
-                        self.end = False
-                    else:
-                        self.paused = not self.paused
+                self.handle_keydown_event(event)
 
             if event.type == pygame.constants.KEYUP:
-                if event.key == pygame.constants.K_DOWN:
-                    self.move_down_fast = False
+                self.handle_keyup_event(event)
 
             if not self.paused and not self.end and self.tetris.piece:
                 if event.type == self.event.delay:
-                    if not self.move_down_fast:
-                        self.tetris.move_down()
+                    self.handle_delay_event()
+
                 if event.type == self.event.move_down_fast:
-                    if self.move_down_fast:
-                        self.tetris.move_down()
+                    self.handle_move_down_fast()
+
+    def handle_keydown_event(self, event):
+        if not self.paused:
+            if event.key == pygame.constants.K_LEFT:
+                self.tetris.move_side(0-BLOCK)
+            if event.key == pygame.constants.K_RIGHT:
+                self.tetris.move_side(BLOCK)
+            if event.key == pygame.constants.K_UP:
+                self.tetris.rotate()
+            if event.key == pygame.constants.K_DOWN:
+                self.move_down_fast = True
+        if event.key == pygame.constants.K_SPACE:
+            if self.end:
+                self.tetris.wipe()
+                self.end = False
+            else:
+                self.paused = not self.paused
+
+    def handle_keyup_event(self, event):
+        if event.key == pygame.constants.K_DOWN:
+            self.move_down_fast = False
+
+    def handle_delay_event(self):
+        if not self.move_down_fast:
+            self.tetris.move_down()
+
+    def handle_move_down_fast(self):
+        if self.move_down_fast:
+            self.tetris.move_down()
 
     def menu_events(self):
         for event in self.event.get():
