@@ -10,11 +10,12 @@ Clone this repository to your desired directory
 
 Install dependencies
 
+
+```cd TETRIS```
+
 ```poetry install```
 
 Start program
-
-```cd TETRIS```
 
 ```poetry run invoke start```
 ## Command-line:
