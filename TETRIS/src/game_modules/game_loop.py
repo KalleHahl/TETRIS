@@ -56,10 +56,10 @@ class Game:
         elif event.key == pygame.K_RETURN:
             print(self.player)
             self.player = ''
-            pygame.time.wait(2000)
             self.state = 'menu'
             self.tetris.wipe()
             self.end = False
+            self._score_saved()
         else:
             self.player += event.unicode
 
@@ -95,6 +95,14 @@ class Game:
             elif event.type == pygame.constants.KEYDOWN:
                 if event.key == pygame.constants.K_SPACE:
                     self.state = 'game'
+
+    def _score_saved(self):
+        self.renderer.render_score_saved()
+        pygame.display.update()
+        pygame.time.wait(3000)
+        self.renderer.render_menu()
+        pygame.display.update()
+
 
     def start(self):
         while not self.quit:

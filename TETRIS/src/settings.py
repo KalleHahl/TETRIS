@@ -1,3 +1,4 @@
+import pygame 
 
 WIDTH = 700
 HEIGHT = 800
@@ -11,7 +12,7 @@ BLOCK = 40
 BACKROUND = (99, 99, 99)
 LINE = (128, 128, 128)
 
-
+BACKGROUND_IMG = pygame.image.load("src/assets/aurora.jpg")
 colors = {
     'I': (0, 205, 205),
     'T': (178, 58, 238),

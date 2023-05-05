@@ -1,6 +1,6 @@
 import pygame
 from src.gui.buttons.buttons import Buttons
-from src.settings import BACKROUND, BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK, WIDTH
+from src.settings import BACKROUND, BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK, WIDTH, BACKGROUND_IMG
 
 
 class Renderer:
@@ -11,16 +11,14 @@ class Renderer:
         self.button = Buttons(self.screen)
 
     def render_backround_game(self):
-        self.screen.fill(BACKROUND)
-        self.screen.fill((220, 220, 220), (BOARD_WIDTH,
-                         0, BOARD_WIDTH, BOARD_HEIGHT))
+        self.screen.blit(BACKGROUND_IMG,(0,0))
         for x_coordinate in range(0, BOARD_WIDTH, BLOCK):
             pygame.draw.line(self.screen, (LINE),
                              (x_coordinate, 0), (x_coordinate, BOARD_HEIGHT))
         for y_coordinate in range(0, BOARD_HEIGHT, BLOCK):
             pygame.draw.line(self.screen, (LINE),
                              (0, y_coordinate), (BOARD_WIDTH, y_coordinate))
-        pygame.draw.line(self.screen, (0, 0, 0),
+        pygame.draw.line(self.screen, (LINE),
                          (BOARD_WIDTH, 0), (BOARD_WIDTH, BOARD_HEIGHT), 2)
 
     def render_piece(self):
@@ -41,11 +39,11 @@ class Renderer:
         piece_coordinates = self.tetris.ghost.piece_info()
         for coordinate in piece_coordinates:
 
-            pygame.draw.rect(self.screen, (0, 0, 0),
+            pygame.draw.rect(self.screen, (220, 220, 220),
                              (self.tetris.ghost.x_coordinate + coordinate[0]*BLOCK,
                              self.tetris.ghost.y_coordinate +
                                  coordinate[1]*BLOCK,
-                             BLOCK, BLOCK), 3, 4)
+                             BLOCK, BLOCK), 2, 4)
 
     def render_next_piece(self):
         next_coordinates = self.tetris.next_piece.piece_info()
@@ -85,15 +83,21 @@ class Renderer:
 
     def render_menu(self):
         self.screen.fill(BACKROUND)
+        self.screen.blit(BACKGROUND_IMG, (0,0))
         self.button.start()
+
+    def render_score_saved(self):
+        self.screen.blit(BACKGROUND_IMG,(0,0))
+        self.button.score_saved()
 
     def render_game_over(self, player):
         self.blur()
         self.button.user_input(player)
-        # self.button.game_over()
+        self.button.game_over()
+        self.button.enter_name()
 
     def blur(self):
         blur = pygame.Surface((WIDTH, BOARD_HEIGHT))
-        blur.set_alpha(150)
+        blur.set_alpha(200)
         blur.fill((0, 0, 0))
         self.screen.blit(blur, (0, 0))

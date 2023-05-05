@@ -8,23 +8,29 @@ class Buttons:
         self.screen = screen
 
     def resume(self):
-        return self.template('Press space to resume!', BOARD_WIDTH//2, HEIGHT//2)
+        return self._template('Press space to resume!', WIDTH//2, HEIGHT//2,40)
 
     def game_over(self):
-        return self.template('Game over! Press space to restart!', BOARD_WIDTH//2, HEIGHT//2)
+        return self._template('Game over',WIDTH//2, HEIGHT//4,100)
 
     def start(self):
-        return self.template('Press space to start!', WIDTH//2, HEIGHT//2)
+        return self._template('Press space to start!', WIDTH//2, HEIGHT//2,40)
 
     def next_piece(self):
-        return self.template('Next piece', WIDTH-150, 100)
+        return self._template('Next piece', WIDTH-150, 100,40)
 
     def score(self, score):
-        return self.template(f'Score: {score}', WIDTH-150, 400)
+        return self._template(f'Score: {score}', WIDTH-150, 400,40)
 
-    def template(self, text, x_coordinate, y_coordinate):
-        font = pygame.font.Font('freesansbold.ttf', 20)
-        text_1 = font.render(text, True, (0, 0, 0), (255, 255, 255))
+    def score_saved(self):
+        return self._template('Score saved!', WIDTH//2, HEIGHT//2,40)
+
+    def enter_name(self):
+        return self._template('Enter name:', WIDTH//2, HEIGHT//2-20, 30)
+
+    def _template(self, text, x_coordinate, y_coordinate, size):
+        font = pygame.font.Font('freesansbold.ttf', size)
+        text_1 = font.render(text, True, (220, 220, 220), (0, 0,0))
         rectangle = text_1.get_rect()
         rectangle.center = (x_coordinate, y_coordinate)
         self.screen.blit(text_1, rectangle)
@@ -32,7 +38,7 @@ class Buttons:
     def user_input(self, player):
         text = pygame.font.Font('freesansbold.ttf', 20)
         player_name = text.render(player, True, (255, 255, 255))
-        rect_width = max(100, player_name.get_width() + 15)
+        rect_width = max(200, player_name.get_width() + 15)
         input_rect = pygame.Rect(WIDTH//2-rect_width //
                                  2, HEIGHT//2, rect_width, 32)
         pygame.draw.rect(self.screen, (255, 255, 255), input_rect, 2)
