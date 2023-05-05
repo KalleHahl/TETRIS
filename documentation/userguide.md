@@ -1,5 +1,5 @@
 # User guide
-Download the source code for the latest [release](https://github.com/KalleHahl/ot-harjoitustyo/releases) from the zip file below the Assets-text.
+Download the source code for the latest [release](https://github.com/KalleHahl/ot-harjoitustyo/releases/tag/Week6) from the zip file below the Assets-text.
 ## Start:
 To start the program, follow these steps:
 

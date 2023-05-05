@@ -42,6 +42,7 @@ Pylint:
 ```poetry run invoke lint```
 
 ## Documentation:
+* [User guide](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/userguide.md)
 * [Project definition](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/definition.md)
 * [Time-log](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/timelog.md)
 * [Changelog](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/changelog.md)
