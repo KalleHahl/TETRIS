@@ -46,7 +46,7 @@ class Game:
                     self.handle_move_down_fast()
 
     def handle_keydown_event(self, event):
-        if not self.paused:
+        if not self.paused and not self.end:
             if event.key == pygame.constants.K_LEFT:
                 self.tetris.move_side(0-BLOCK)
             if event.key == pygame.constants.K_RIGHT:
@@ -55,6 +55,13 @@ class Game:
                 self.tetris.rotate()
             if event.key == pygame.constants.K_DOWN:
                 self.move_down_fast = True
+        else:
+            if event.key == pygame.K_BACKSPACE:
+                self.renderer.player = self.renderer.player[:-1]
+            else:
+                self.renderer.player += event.unicode
+            self.renderer.render_game_over()
+
         if event.key == pygame.constants.K_SPACE:
             if self.end:
                 self.tetris.wipe()
@@ -95,4 +102,5 @@ class Game:
             elif self.state == 'menu':
                 self.menu_events()
                 self.renderer.render_menu()
+
 

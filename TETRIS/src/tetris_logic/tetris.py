@@ -31,6 +31,7 @@ class Tetris:
         self.score = 0
         self.speed = 750
         self.update_speed = False
+        self.player = ''
 
     def new_piece(self):
         """Creates a new piece and ghost. Checks if piece is out of bounds.
