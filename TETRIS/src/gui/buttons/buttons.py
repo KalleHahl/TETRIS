@@ -1,5 +1,5 @@
 import pygame
-from src.settings import BOARD_WIDTH, HEIGHT, WIDTH
+from src.settings import HEIGHT, WIDTH
 
 
 class Buttons:

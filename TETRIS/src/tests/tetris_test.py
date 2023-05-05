@@ -114,6 +114,7 @@ class TetrisTest(unittest.TestCase):
     def test_y_coordinate_below0(self):
         self.game.piece.y_coordinate = -40
         coordinates = self.game.piece.piece_info()
+        self.game.add_piece_to_board()
         self.assertEqual(self.game.piece.y_coordinate, -40)
         self.assertFalse(self.game.out_of_bounds(
             coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
@@ -124,3 +125,13 @@ class TetrisTest(unittest.TestCase):
         self.game.full_lines()
         self.assertEqual(self.game.score, 10)
         self.assertEqual(self.game.speed, 750//2)
+    
+    def test_jump_down(self):
+        self.game.jump_down()
+        self.assertEqual(self.game.piece.y_coordinate, self.game.ghost.y_coordinate)
+
+    def test_wipe(self):
+        self.game.piece.y_coordinate = 400
+        self.game.wipe()
+        with self.assertRaises(AttributeError):
+            self.game.piece.y_coordinate
