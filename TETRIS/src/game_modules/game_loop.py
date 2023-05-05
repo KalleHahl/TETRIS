@@ -15,8 +15,9 @@ class Game:
         self.event = event_queue
         self.clock = clock
         self.move_down_fast = False
+        self.player = ''
 
-    def update(self):
+    def _update(self):
         if self.tetris.end:
             self.end = True
             return
@@ -27,26 +28,43 @@ class Game:
             self.event.set_speed(self.tetris.speed)
             self.tetris.update_speed = False
 
-    def game_events(self):
+    def _game_events(self):
         for event in self.event.get():
             if event.type == pygame.constants.QUIT:
                 self.quit = True
 
             if event.type == pygame.constants.KEYDOWN:
-                self.handle_keydown_event(event)
+                if self.end:
+                    self._handle_keydown_event_end(event)
+                else:
+                    self._handle_keydown_event(event)
 
             if event.type == pygame.constants.KEYUP:
-                self.handle_keyup_event(event)
+                self._handle_keyup_event(event)
 
             if not self.paused and not self.end and self.tetris.piece:
                 if event.type == self.event.delay:
-                    self.handle_delay_event()
+                    self._handle_delay_event()
 
                 if event.type == self.event.move_down_fast:
-                    self.handle_move_down_fast()
+                    self._handle_move_down_fast()
 
-    def handle_keydown_event(self, event):
-        if not self.paused and not self.end:
+    def _handle_keydown_event_end(self, event):
+
+        if event.key == pygame.K_BACKSPACE:
+            self.player = self.player[:-1]
+        elif event.key == pygame.K_RETURN:
+            print(self.player)
+            self.player = ''
+            pygame.time.wait(2000)
+            self.state = 'menu'
+            self.tetris.wipe()
+            self.end = False
+        else:
+            self.player += event.unicode
+
+    def _handle_keydown_event(self, event):
+        if not self.paused:
             if event.key == pygame.constants.K_LEFT:
                 self.tetris.move_side(0-BLOCK)
             if event.key == pygame.constants.K_RIGHT:
@@ -55,33 +73,22 @@ class Game:
                 self.tetris.rotate()
             if event.key == pygame.constants.K_DOWN:
                 self.move_down_fast = True
-        else:
-            if event.key == pygame.K_BACKSPACE:
-                self.renderer.player = self.renderer.player[:-1]
-            else:
-                self.renderer.player += event.unicode
-            self.renderer.render_game_over()
-
         if event.key == pygame.constants.K_SPACE:
-            if self.end:
-                self.tetris.wipe()
-                self.end = False
-            else:
-                self.paused = not self.paused
+            self.paused = not self.paused
 
-    def handle_keyup_event(self, event):
+    def _handle_keyup_event(self, event):
         if event.key == pygame.constants.K_DOWN:
             self.move_down_fast = False
 
-    def handle_delay_event(self):
+    def _handle_delay_event(self):
         if not self.move_down_fast:
             self.tetris.move_down()
 
-    def handle_move_down_fast(self):
+    def _handle_move_down_fast(self):
         if self.move_down_fast:
             self.tetris.move_down()
 
-    def menu_events(self):
+    def _menu_events(self):
         for event in self.event.get():
             if event.type == pygame.constants.QUIT:
                 self.quit = True
@@ -93,14 +100,14 @@ class Game:
         while not self.quit:
             self.clock.tick(60)
             if self.state == 'game':
-                self.game_events()
+                self._game_events()
                 if not self.tetris.piece:
                     self.tetris.new_piece()
                 if not self.end:
-                    self.update()
-                self.renderer.render_all(self.paused, self.end)
+                    self._update()
+                self.renderer.render_all(self.paused, self.end, self.player)
             elif self.state == 'menu':
-                self.menu_events()
+                self._menu_events()
                 self.renderer.render_menu()
 
-
+            pygame.display.update()

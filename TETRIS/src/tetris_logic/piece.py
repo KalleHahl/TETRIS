@@ -59,5 +59,6 @@ class Ghost(Piece):
     Args:
         Piece (object): inherits attributes of piece-object
     """
+
     def __init__(self):
         pass

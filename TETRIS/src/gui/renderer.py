@@ -9,11 +9,11 @@ class Renderer:
         self.screen = screen
         self.tetris = tetris
         self.button = Buttons(self.screen)
-        self.player = ''
 
     def render_backround_game(self):
         self.screen.fill(BACKROUND)
-        self.screen.fill((220,220,220), (BOARD_WIDTH, 0, BOARD_WIDTH, BOARD_HEIGHT))
+        self.screen.fill((220, 220, 220), (BOARD_WIDTH,
+                         0, BOARD_WIDTH, BOARD_HEIGHT))
         for x_coordinate in range(0, BOARD_WIDTH, BLOCK):
             pygame.draw.line(self.screen, (LINE),
                              (x_coordinate, 0), (x_coordinate, BOARD_HEIGHT))
@@ -68,7 +68,7 @@ class Renderer:
                 pygame.draw.rect(self.screen, (0, 0, 0),
                                  (BLOCK*x_coordinate, BLOCK*y_coordinate, BLOCK, BLOCK), 3, 4)
 
-    def render_all(self, pause, end):
+    def render_all(self, pause, end, player):
         self.render_backround_game()
         self.render_piece()
         self.render_ghost()
@@ -81,23 +81,19 @@ class Renderer:
             self.blur()
             self.button.resume()
         if end:
-            self.render_game_over()
-
-        pygame.display.update()
+            self.render_game_over(player)
 
     def render_menu(self):
         self.screen.fill(BACKROUND)
         self.button.start()
-        pygame.display.update()
 
-    def render_game_over(self):
+    def render_game_over(self, player):
         self.blur()
-        self.button.user_input(self.player)
-        #self.button.game_over()
-    
+        self.button.user_input(player)
+        # self.button.game_over()
+
     def blur(self):
         blur = pygame.Surface((WIDTH, BOARD_HEIGHT))
         blur.set_alpha(150)
-        blur.fill((0,0,0))
-        self.screen.blit(blur, (0,0))
-
+        blur.fill((0, 0, 0))
+        self.screen.blit(blur, (0, 0))

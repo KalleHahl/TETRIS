@@ -136,7 +136,7 @@ class Tetris:
 
             if (x_coordinate2 > BOARD_WIDTH-BLOCK or x_coordinate2 < 0 or
                 y_coordinate2 > HEIGHT-BLOCK or
-                self.board[y_coordinate2//BLOCK][x_coordinate2//BLOCK] != 0):
+                    self.board[y_coordinate2//BLOCK][x_coordinate2//BLOCK] != 0):
                 return True
 
         return False
