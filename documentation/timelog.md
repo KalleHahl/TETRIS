@@ -12,4 +12,5 @@
 | 24.4 | 3 h | changed wall kicks a bit, cleaning code, wrote tests |
 | 25.4 | 5 h | ghost piece implemented, speed increase implented, wrote tests |
 | 2.5 | 3 h | wrote docstrings for classes, refactored a bit | 
-| total | 38 h 30 min | |
+| 5.5 | 6 h | Made UI prettier and added methods |
+| total | 44 h 30 min | |

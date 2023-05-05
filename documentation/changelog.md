@@ -22,3 +22,8 @@
 * Game speed now increases every 10 points
 ## Week 6
 * Added docstrings and userguide
+## Week 7
+* Added blur screen when paused and game over
+* Added input box where player name is written
+* Added new background and improved UI
+* Added jump down method to immediately drop piece
