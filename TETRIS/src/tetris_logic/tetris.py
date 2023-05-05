@@ -74,6 +74,9 @@ class Tetris:
             return
 
     def jump_down(self):
+        """Method for moving piece to the bottom by changing
+        its y coordinate to that of the ghost piece
+        """
         self.piece.y_coordinate = self.ghost.y_coordinate
         self.add_piece_to_board()
         self.piece.landed = True

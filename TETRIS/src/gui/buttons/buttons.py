@@ -8,7 +8,7 @@ class Buttons:
         self.screen = screen
 
     def resume(self):
-        return self._template('Press space to resume!', WIDTH//2, HEIGHT//2,40)
+        return self._template('Press escape to resume!', WIDTH//2, HEIGHT//2,40)
 
     def game_over(self):
         return self._template('Game over',WIDTH//2, HEIGHT//4,100)

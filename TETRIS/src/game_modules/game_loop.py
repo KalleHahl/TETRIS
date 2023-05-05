@@ -54,7 +54,6 @@ class Game:
         if event.key == pygame.K_BACKSPACE:
             self.player = self.player[:-1]
         elif event.key == pygame.K_RETURN:
-            print(self.player)
             self.player = ''
             self.state = 'menu'
             self.tetris.wipe()
