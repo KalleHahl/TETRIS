@@ -3,7 +3,6 @@ from collections import deque
 from src.tetris_logic.piece import Piece, Ghost
 from src.settings import BLOCK, BOARD_WIDTH, HEIGHT
 
-
 class Tetris:
 
     """Class, which takes care of the tetris logic.
@@ -31,7 +30,6 @@ class Tetris:
         self.score = 0
         self.speed = 750
         self.update_speed = False
-        self.player = ''
 
     def new_piece(self):
         """Creates a new piece and ghost. Checks if piece is out of bounds.
@@ -74,6 +72,11 @@ class Tetris:
             self.piece.landed = True
             self.add_piece_to_board()
             return
+
+    def jump_down(self):
+        self.piece.y_coordinate = self.ghost.y_coordinate
+        self.add_piece_to_board()
+        self.piece.landed = True
 
     def rotate(self):
         """Method for rotating current piece. If rotation is out of bounds,
@@ -136,7 +139,7 @@ class Tetris:
 
             if (x_coordinate2 > BOARD_WIDTH-BLOCK or x_coordinate2 < 0 or
                 y_coordinate2 > HEIGHT-BLOCK or
-                    self.board[y_coordinate2//BLOCK][x_coordinate2//BLOCK] != 0):
+                self.board[y_coordinate2//BLOCK][x_coordinate2//BLOCK] != 0):
                 return True
 
         return False

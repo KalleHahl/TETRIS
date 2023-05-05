@@ -73,7 +73,9 @@ class Game:
                 self.tetris.rotate()
             if event.key == pygame.constants.K_DOWN:
                 self.move_down_fast = True
-        if event.key == pygame.constants.K_SPACE:
+            if event.key == pygame.constants.K_SPACE:
+                self.tetris.jump_down()
+        if event.key == pygame.constants.K_ESCAPE:
             self.paused = not self.paused
 
     def _handle_keyup_event(self, event):
