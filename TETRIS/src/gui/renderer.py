@@ -92,7 +92,7 @@ class Renderer:
 
     def render_game_over(self):
         self.blur()
-        self.render_user_input()
+        self.button.user_input(self.player)
         #self.button.game_over()
     
     def blur(self):
@@ -101,10 +101,3 @@ class Renderer:
         blur.fill((0,0,0))
         self.screen.blit(blur, (0,0))
 
-    def render_user_input(self):
-        text = pygame.font.Font('freesansbold.ttf', 20)
-        player_name = text.render(self.player, True, (255,255,255))
-        rect_width = max(100, player_name.get_width() + 15)
-        input_rect = pygame.Rect(WIDTH//2-rect_width//2,BOARD_HEIGHT//2,rect_width,32)
-        pygame.draw.rect(self.screen,(255,255,255),input_rect,2)
-        self.screen.blit(player_name,(input_rect.x+5,input_rect.y+5))
