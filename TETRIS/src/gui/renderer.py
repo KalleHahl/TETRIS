@@ -1,6 +1,6 @@
 import pygame
 from src.gui.buttons.buttons import Buttons
-from src.settings import BACKROUND, BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK
+from src.settings import BACKROUND, BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK, WIDTH
 
 
 class Renderer:
@@ -12,6 +12,7 @@ class Renderer:
 
     def render_backround_game(self):
         self.screen.fill(BACKROUND)
+        self.screen.fill((220,220,220), (BOARD_WIDTH, 0, BOARD_WIDTH, BOARD_HEIGHT))
         for x_coordinate in range(0, BOARD_WIDTH, BLOCK):
             pygame.draw.line(self.screen, (LINE),
                              (x_coordinate, 0), (x_coordinate, BOARD_HEIGHT))
@@ -78,7 +79,7 @@ class Renderer:
         if pause:
             self.button.resume()
         if end:
-            self.button.game_over()
+            self.render_game_over()
 
         pygame.display.update()
 
@@ -86,3 +87,10 @@ class Renderer:
         self.screen.fill(BACKROUND)
         self.button.start()
         pygame.display.update()
+
+    def render_game_over(self):
+        blur = pygame.Surface((WIDTH, BOARD_HEIGHT))
+        blur.set_alpha(150)
+        blur.fill((0,0,0))
+        self.screen.blit(blur, (0,0))
+        self.button.game_over()

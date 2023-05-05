@@ -95,3 +95,4 @@ class Game:
             elif self.state == 'menu':
                 self.menu_events()
                 self.renderer.render_menu()
+
