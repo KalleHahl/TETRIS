@@ -3,7 +3,7 @@ import pygame
 
 class EventQueue:
     """Class for handling events
-    
+
     Attributes:
         speed: game speed for delay timer
         delay: userevent for moving piece down periodically

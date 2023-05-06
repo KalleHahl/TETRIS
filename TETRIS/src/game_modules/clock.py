@@ -7,6 +7,7 @@ class Clock:
     Attributes:
         clock: pygame clock
     """
+
     def __init__(self):
         """Class constructor
         """

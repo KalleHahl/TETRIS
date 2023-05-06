@@ -125,10 +125,11 @@ class TetrisTest(unittest.TestCase):
         self.game.full_lines()
         self.assertEqual(self.game.score, 10)
         self.assertEqual(self.game.speed, 750//2)
-    
+
     def test_jump_down(self):
         self.game.jump_down()
-        self.assertEqual(self.game.piece.y_coordinate, self.game.ghost.y_coordinate)
+        self.assertEqual(self.game.piece.y_coordinate,
+                         self.game.ghost.y_coordinate)
 
     def test_wipe(self):
         self.game.piece.y_coordinate = 400

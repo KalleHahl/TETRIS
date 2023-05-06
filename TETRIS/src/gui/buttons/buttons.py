@@ -20,7 +20,7 @@ class Buttons:
         Returns:
             function: returns the temmplate method with correct text
         """
-        return self._template('Press escape to resume!', WIDTH//2, HEIGHT//2,40)
+        return self._template('Press escape to resume!', WIDTH//2, HEIGHT//2, 40)
 
     def game_over(self):
         """Game over button
@@ -28,7 +28,7 @@ class Buttons:
         Returns:
             function: returns the template method with correct text
         """
-        return self._template('Game over',WIDTH//2, HEIGHT//4,100)
+        return self._template('Game over', WIDTH//2, HEIGHT//4, 100)
 
     def start(self):
         """Start game button
@@ -36,7 +36,7 @@ class Buttons:
         Returns:
             function: returns the template method with correct text
         """
-        return self._template('Press space to start!', WIDTH//2, HEIGHT//2,40)
+        return self._template('Press space to start!', WIDTH//2, HEIGHT//2, 40)
 
     def next_piece(self):
         """Next piece button
@@ -44,7 +44,7 @@ class Buttons:
         Returns:
             function: returns the template method with correct text
         """
-        return self._template('Next piece', WIDTH-150, 100,40)
+        return self._template('Next piece', WIDTH-150, 100, 40)
 
     def score(self, score):
         """Button for current score
@@ -55,7 +55,7 @@ class Buttons:
         Returns:
             function: returns the template method with correct text
         """
-        return self._template(f'Score: {score}', WIDTH-150, 400,40)
+        return self._template(f'Score: {score}', WIDTH-150, 400, 40)
 
     def score_saved(self):
         """Score saved button
@@ -63,7 +63,7 @@ class Buttons:
         Returns:
             function: returns the template method with correct text
         """
-        return self._template('Score saved!', WIDTH//2, HEIGHT//2,40)
+        return self._template('Score saved!', WIDTH//2, HEIGHT//2, 40)
 
     def enter_name(self):
         """Enter name button
@@ -83,7 +83,7 @@ class Buttons:
             size (int): font size
         """
         font = pygame.font.Font('freesansbold.ttf', size)
-        text_1 = font.render(text, True, (220, 220, 220), (0, 0,0))
+        text_1 = font.render(text, True, (220, 220, 220), (0, 0, 0))
         rectangle = text_1.get_rect()
         rectangle.center = (x_coordinate, y_coordinate)
         self.screen.blit(text_1, rectangle)

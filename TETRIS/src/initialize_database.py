@@ -1,5 +1,6 @@
 from src.database_connection import get_data_base_connection
 
+
 def drop_tables(connection):
     cursor = connection.cursor()
 
@@ -12,7 +13,6 @@ def drop_tables(connection):
 
 def create_tables(connection):
     cursor = connection.cursor()
-
 
     cursor.execute('''
         create table scores (

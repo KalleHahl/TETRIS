@@ -160,7 +160,6 @@ class Game:
         self._renderer.render_menu()
         pygame.display.update()
 
-
     def start(self):
         """Main method to start the game loop and updating screen.
         Calls methods according to game state
@@ -173,7 +172,8 @@ class Game:
                     self._tetris.new_piece()
                 if not self._end:
                     self._update()
-                self._renderer.render_all(self._paused, self._end, self._player)
+                self._renderer.render_all(
+                    self._paused, self._end, self._player)
             elif self._state == 'menu':
                 self._menu_events()
                 self._renderer.render_menu()

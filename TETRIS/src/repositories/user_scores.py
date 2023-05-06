@@ -1,6 +1,7 @@
 class UserScores:
     """Repository class for saving user scores to database
     """
+
     def __init__(self, connection):
         """Class constructor
 
@@ -17,7 +18,8 @@ class UserScores:
         """
         cursor = self._connection.cursor()
 
-        cursor.execute("select username, score from scores order by score limit 3")
+        cursor.execute(
+            "select username, score from scores order by score limit 3")
 
         scores = cursor.fetchall()
 
@@ -34,7 +36,5 @@ class UserScores:
 
         cursor.execute('insert into scores (username, score) values (?,?)',
                        (player, score))
-        
-        self._connection.commit()
 
-    
+        self._connection.commit()

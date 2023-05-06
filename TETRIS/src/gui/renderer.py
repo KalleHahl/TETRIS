@@ -27,7 +27,7 @@ class Renderer:
         """Method for rendering picture and grid in the 
         game background
         """
-        self.screen.blit(BACKGROUND_IMG,(0,0))
+        self.screen.blit(BACKGROUND_IMG, (0, 0))
         for x_coordinate in range(0, BOARD_WIDTH, BLOCK):
             pygame.draw.line(self.screen, (LINE),
                              (x_coordinate, 0), (x_coordinate, BOARD_HEIGHT))
@@ -116,13 +116,13 @@ class Renderer:
         """Method for rendering menu state
         """
         self.screen.fill(BACKROUND)
-        self.screen.blit(BACKGROUND_IMG, (0,0))
+        self.screen.blit(BACKGROUND_IMG, (0, 0))
         self.button.start()
 
     def render_score_saved(self):
         """Method for rendering score saved on display
         """
-        self.screen.blit(BACKGROUND_IMG,(0,0))
+        self.screen.blit(BACKGROUND_IMG, (0, 0))
         self.button.score_saved()
 
     def render_game_over(self, player):
