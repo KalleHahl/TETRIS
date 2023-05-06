@@ -19,7 +19,7 @@ class Game:
         player: player name
     """
 
-    def __init__(self, screen, tetris, renderer, event_queue, clock):
+    def __init__(self, screen, tetris, renderer, event_queue, clock, score_repo):
         """Class constructor
 
         Args:
@@ -40,6 +40,7 @@ class Game:
         self._clock = clock
         self._move_down_fast = False
         self._player = ''
+        self._score_repo = score_repo
 
     def _update(self):
         """Method for keeping game updated when playing.
@@ -88,6 +89,7 @@ class Game:
         if event.key == pygame.K_BACKSPACE:
             self._player = self._player[:-1]
         elif event.key == pygame.K_RETURN:
+            self._score_repo.create_score(self._player, self._tetris.score)
             self._player = ''
             self._state = 'menu'
             self._tetris.wipe()
@@ -160,7 +162,8 @@ class Game:
 
 
     def start(self):
-        """Main method to start the game loop and updating screen
+        """Main method to start the game loop and updating screen.
+        Calls methods according to game state
         """
         while not self._quit:
             self._clock.tick(60)

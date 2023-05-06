@@ -5,6 +5,8 @@ from src.gui.renderer import Renderer
 from src.game_modules.event_queue import EventQueue
 from src.game_modules.clock import Clock
 from src.settings import WIDTH, HEIGHT
+from src.repositories.user_scores import UserScores
+from src.database_connection import get_data_base_connection
 
 
 def main():
@@ -14,7 +16,8 @@ def main():
     renderer = Renderer(display, tetris)
     event_queue = EventQueue()
     clock = Clock()
-    loop = Game(display, tetris, renderer, event_queue, clock)
+    score_repo = UserScores(get_data_base_connection())
+    loop = Game(display, tetris, renderer, event_queue, clock, score_repo)
     pygame.init()
     loop.start()
 
