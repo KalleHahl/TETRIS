@@ -13,4 +13,5 @@
 | 25.4 | 5 h | ghost piece implemented, speed increase implented, wrote tests |
 | 2.5 | 3 h | wrote docstrings for classes, refactored a bit | 
 | 5.5 | 6 h | Made UI prettier and added methods |
+| 6.5 | 3 h | Added database to store scores |
 | total | 44 h 30 min | |

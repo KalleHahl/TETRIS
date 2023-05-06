@@ -27,3 +27,5 @@
 * Added input box where player name is written
 * Added new background and improved UI
 * Added jump down method to immediately drop piece
+* Added database to keep track of scores
+* Added method to return top 3 scores from database
