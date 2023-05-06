@@ -4,13 +4,29 @@ from src.settings import BACKROUND, BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK, WIDT
 
 
 class Renderer:
+    """Renderer class for rendering pygame screen
+
+    Attributes:
+        screen: pygame display to draw on
+        tetris: tetris class to get piece coordinates
+        button: buttons class for button management
+    """
 
     def __init__(self, screen, tetris):
+        """Class constructor
+
+        Args:
+            screen (pygame.surface): pygame display where stuff is rendered
+            tetris (class): Tetris class
+        """
         self.screen = screen
         self.tetris = tetris
         self.button = Buttons(self.screen)
 
     def render_backround_game(self):
+        """Method for rendering picture and grid in the 
+        game background
+        """
         self.screen.blit(BACKGROUND_IMG,(0,0))
         for x_coordinate in range(0, BOARD_WIDTH, BLOCK):
             pygame.draw.line(self.screen, (LINE),
@@ -22,6 +38,8 @@ class Renderer:
                          (BOARD_WIDTH, 0), (BOARD_WIDTH, BOARD_HEIGHT), 2)
 
     def render_piece(self):
+        """Method for rendering current piece on the screen
+        """
         piece_coordinates = self.tetris.piece.piece_info()
         for coordinate in piece_coordinates:
             pygame.draw.rect(self.screen, self.tetris.piece.color,
@@ -36,6 +54,8 @@ class Renderer:
                              BLOCK, BLOCK), 3, 4)
 
     def render_ghost(self):
+        """Method for rendering the 'ghost' for the current piece
+        """
         piece_coordinates = self.tetris.ghost.piece_info()
         for coordinate in piece_coordinates:
 
@@ -46,6 +66,8 @@ class Renderer:
                              BLOCK, BLOCK), 2, 4)
 
     def render_next_piece(self):
+        """Method for rendering the next piece
+        """
         next_coordinates = self.tetris.next_piece.piece_info()
         for coordinate in next_coordinates:
             pygame.draw.rect(self.screen, self.tetris.next_piece.color,
@@ -56,6 +78,8 @@ class Renderer:
                              BLOCK, BLOCK), 3, 4)
 
     def render_previous_pieces(self):
+        """Method for rendering all previous pieces on the board
+        """
         for y_coordinate in range(20):
             for x_coordinate in range(10):
                 color = self.tetris.board[y_coordinate][x_coordinate]
@@ -67,6 +91,13 @@ class Renderer:
                                  (BLOCK*x_coordinate, BLOCK*y_coordinate, BLOCK, BLOCK), 3, 4)
 
     def render_all(self, pause, end, player):
+        """Method for rendering all of the necessary things during game
+
+        Args:
+            pause (boolean): Tells if the game should render pause state
+            end (boolean): Tells if game should render game over screen
+            player (string): Player name
+        """
         self.render_backround_game()
         self.render_piece()
         self.render_ghost()
@@ -82,21 +113,32 @@ class Renderer:
             self.render_game_over(player)
 
     def render_menu(self):
+        """Method for rendering menu state
+        """
         self.screen.fill(BACKROUND)
         self.screen.blit(BACKGROUND_IMG, (0,0))
         self.button.start()
 
     def render_score_saved(self):
+        """Method for rendering score saved on display
+        """
         self.screen.blit(BACKGROUND_IMG,(0,0))
         self.button.score_saved()
 
     def render_game_over(self, player):
+        """Method for rendering game over screen
+
+        Args:
+            player (string): Player name
+        """
         self.blur()
         self.button.user_input(player)
         self.button.game_over()
         self.button.enter_name()
 
     def blur(self):
+        """Method for blurring the screen
+        """
         blur = pygame.Surface((WIDTH, BOARD_HEIGHT))
         blur.set_alpha(200)
         blur.fill((0, 0, 0))

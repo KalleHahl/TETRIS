@@ -3,32 +3,85 @@ from src.settings import HEIGHT, WIDTH
 
 
 class Buttons:
+    """Class for rendering buttons
+    """
 
     def __init__(self, screen):
+        """Class constructor
+
+        Args:
+            screen (pygame.display): Display to render on
+        """
         self.screen = screen
 
     def resume(self):
+        """Resume game button
+
+        Returns:
+            function: returns the temmplate method with correct text
+        """
         return self._template('Press escape to resume!', WIDTH//2, HEIGHT//2,40)
 
     def game_over(self):
+        """Game over button
+
+        Returns:
+            function: returns the template method with correct text
+        """
         return self._template('Game over',WIDTH//2, HEIGHT//4,100)
 
     def start(self):
+        """Start game button
+
+        Returns:
+            function: returns the template method with correct text
+        """
         return self._template('Press space to start!', WIDTH//2, HEIGHT//2,40)
 
     def next_piece(self):
+        """Next piece button
+
+        Returns:
+            function: returns the template method with correct text
+        """
         return self._template('Next piece', WIDTH-150, 100,40)
 
     def score(self, score):
+        """Button for current score
+
+        Args:
+            score (int): current score
+
+        Returns:
+            function: returns the template method with correct text
+        """
         return self._template(f'Score: {score}', WIDTH-150, 400,40)
 
     def score_saved(self):
+        """Score saved button
+
+        Returns:
+            function: returns the template method with correct text
+        """
         return self._template('Score saved!', WIDTH//2, HEIGHT//2,40)
 
     def enter_name(self):
+        """Enter name button
+
+        Returns:
+            function: returns the template method with correct text
+        """
         return self._template('Enter name:', WIDTH//2, HEIGHT//2-20, 30)
 
     def _template(self, text, x_coordinate, y_coordinate, size):
+        """Template for buttons
+
+        Args:
+            text (string): text to be written on the button
+            x_coordinate (int): x coordinate for button
+            y_coordinate (int): y coordinate for button
+            size (int): font size
+        """
         font = pygame.font.Font('freesansbold.ttf', size)
         text_1 = font.render(text, True, (220, 220, 220), (0, 0,0))
         rectangle = text_1.get_rect()
@@ -36,6 +89,11 @@ class Buttons:
         self.screen.blit(text_1, rectangle)
 
     def user_input(self, player):
+        """Box for user input which changes size with the text
+
+        Args:
+            player (string): player name
+        """
         text = pygame.font.Font('freesansbold.ttf', 20)
         player_name = text.render(player, True, (255, 255, 255))
         rect_width = max(200, player_name.get_width() + 15)

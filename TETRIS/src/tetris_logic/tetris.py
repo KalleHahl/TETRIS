@@ -8,9 +8,9 @@ class Tetris:
     """Class, which takes care of the tetris logic.
 
     Attributes:
-        next_piece: Piece object, which will be displayed next
-        piece: Piece object, current piece on the board
-        ghost: Ghost object, shows where the piece will drop
+        next_piece: Piece class, which will be displayed next
+        piece: Piece class, current piece on the board
+        ghost: Ghost class, shows where the piece will drop
         board: Holds information on pieces on the board
         end: Boolean value, set to True when the game has ended
         score: Integer, keeps track of current score
@@ -20,7 +20,6 @@ class Tetris:
 
     def __init__(self):
         """Class constructor, takes no arguments
-
         """
         self.next_piece = Piece(160, 40)
         self.piece = None
