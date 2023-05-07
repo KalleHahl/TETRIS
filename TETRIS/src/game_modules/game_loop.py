@@ -41,6 +41,7 @@ class Game:
         self._move_down_fast = False
         self._player = ''
         self._score_repo = score_repo
+        self._top_3 = self._top_scores()
 
     def _update(self):
         """Method for keeping game updated when playing.
@@ -81,6 +82,7 @@ class Game:
 
     def _handle_keydown_event__end(self, event):
         """Method for handling keydown events when game is over
+        Wipes game, creates new score and updates top 3
 
         Args:
             event (pygame.event): event type
@@ -89,7 +91,10 @@ class Game:
         if event.key == pygame.K_BACKSPACE:
             self._player = self._player[:-1]
         elif event.key == pygame.K_RETURN:
+            if self._player == '':
+                self._player = "unknown"
             self._score_repo.create_score(self._player, self._tetris.score)
+            self._top_3 = self._top_scores()
             self._player = ''
             self._state = 'menu'
             self._tetris.wipe()
@@ -157,8 +162,16 @@ class Game:
         self._renderer.render_score_saved()
         pygame.display.update()
         pygame.time.wait(3000)
-        self._renderer.render_menu()
+        self._renderer.render_menu(self._top_3)
         pygame.display.update()
+
+    def _top_scores(self):
+        """Method for updating top 3 scores
+
+        Returns:
+            funciton call: function which fetches top 3 scores from db
+        """
+        return self._score_repo.find_top_scores()
 
     def start(self):
         """Main method to start the game loop and updating screen.
@@ -176,6 +189,6 @@ class Game:
                     self._paused, self._end, self._player)
             elif self._state == 'menu':
                 self._menu_events()
-                self._renderer.render_menu()
+                self._renderer.render_menu(self._top_3)
 
             pygame.display.update()

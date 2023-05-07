@@ -19,7 +19,7 @@ class UserScores:
         cursor = self._connection.cursor()
 
         cursor.execute(
-            "select username, score from scores order by score limit 3")
+            "select username, score from scores order by score desc limit 3")
 
         scores = cursor.fetchall()
 

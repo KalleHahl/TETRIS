@@ -36,7 +36,7 @@ class Buttons:
         Returns:
             function: returns the template method with correct text
         """
-        return self._template('Press space to start!', WIDTH//2, HEIGHT//2, 40)
+        return self._template('Press space to start!', WIDTH//2, HEIGHT//3, 40)
 
     def next_piece(self):
         """Next piece button
@@ -72,6 +72,25 @@ class Buttons:
             function: returns the template method with correct text
         """
         return self._template('Enter name:', WIDTH//2, HEIGHT//2-20, 30)
+
+    def highscores(self):
+        """Highscore button
+
+        Returns:
+            function: returns the template method with correct text
+        """
+        return self._template('Highscores', WIDTH//2, HEIGHT//2, 40)
+
+    def top_3(self, top_3):
+        """Method for rendering top 3 scores
+
+        Args:
+            top_3 (list): list of tuples with player name and score
+        """
+        y_coordinate = HEIGHT//2+40
+        for tup in top_3:
+            self._template(f'{tup[0]}: {tup[1]}', WIDTH//2, y_coordinate, 40)
+            y_coordinate += 40
 
     def _template(self, text, x_coordinate, y_coordinate, size):
         """Template for buttons

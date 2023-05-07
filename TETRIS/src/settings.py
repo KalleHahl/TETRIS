@@ -9,7 +9,6 @@ BOARD_HEIGHT = HEIGHT
 BLOCK = 40
 
 
-BACKROUND = (99, 99, 99)
 LINE = (128, 128, 128)
 
 BACKGROUND_IMG = pygame.image.load("src/assets/aurora.jpg")

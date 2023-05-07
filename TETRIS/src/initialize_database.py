@@ -2,6 +2,11 @@ from src.database_connection import get_data_base_connection
 
 
 def drop_tables(connection):
+    """Deletes old table if it exists
+
+    Args:
+        connection: database connection
+    """
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -12,11 +17,16 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
+    """Creates sqlite table
+
+    Args:
+        connection: database connection
+    """
     cursor = connection.cursor()
 
     cursor.execute('''
         create table scores (
-            username text primary key,
+            username text,
             score integer
         );
     ''')
@@ -25,6 +35,8 @@ def create_tables(connection):
 
 
 def initialize_database():
+    """Fucntion for initializing database
+    """
     connection = get_data_base_connection()
 
     drop_tables(connection)

@@ -1,6 +1,6 @@
 import pygame
 from src.gui.buttons.buttons import Buttons
-from src.settings import BACKROUND, BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK, WIDTH, BACKGROUND_IMG
+from src.settings import BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK, WIDTH, BACKGROUND_IMG
 
 
 class Renderer:
@@ -112,12 +112,13 @@ class Renderer:
         if end:
             self.render_game_over(player)
 
-    def render_menu(self):
+    def render_menu(self, top_3):
         """Method for rendering menu state
         """
-        self.screen.fill(BACKROUND)
         self.screen.blit(BACKGROUND_IMG, (0, 0))
         self.button.start()
+        self.button.highscores()
+        self.button.top_3(top_3)
 
     def render_score_saved(self):
         """Method for rendering score saved on display
