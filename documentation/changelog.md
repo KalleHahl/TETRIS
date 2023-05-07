@@ -29,3 +29,4 @@
 * Added jump down method to immediately drop piece
 * Added database to keep track of scores
 * Added method to return top 3 scores from database
+* Top 3 scores are now rendered on menu screen

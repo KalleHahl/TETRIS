@@ -14,4 +14,5 @@
 | 2.5 | 3 h | wrote docstrings for classes, refactored a bit | 
 | 5.5 | 6 h | Made UI prettier and added methods |
 | 6.5 | 3 h | Added database to store scores |
-| total | 47 h 30 min | |
+| 7.5 | 1 h | Added leadesboards, fixed bugs |
+| total | 48 h 30 min | |

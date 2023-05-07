@@ -15,6 +15,10 @@ Install dependencies
 
 ```poetry install```
 
+Initialize database
+
+```poetry run invoke build```
+
 Start program
 
 ```poetry run invoke start```
