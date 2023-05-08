@@ -119,12 +119,12 @@ class TetrisTest(unittest.TestCase):
         self.assertFalse(self.game.out_of_bounds(
             coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
-    def test_score_updates_speed(self):
+    def test_score_updates_level(self):
         self.game.score = 9
         self.game.board[19] = [(0, 0, 0) for i in range(10)]
         self.game.full_lines()
         self.assertEqual(self.game.score, 10)
-        self.assertEqual(self.game.speed, 750//2)
+        self.assertEqual(self.game.level, 1)
 
     def test_jump_down(self):
         self.game.jump_down()

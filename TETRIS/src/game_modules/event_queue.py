@@ -27,11 +27,11 @@ class EventQueue:
         """
         return pygame.event.get()
 
-    def set_speed(self, speed):
+    def set_speed(self, level):
         """Method for changing game speed
 
         Args:
-            speed (int): time in milliseconds
+            level (int): current level in tetris game
         """
-        self.speed = speed
+        self.speed = 750 // (level + 1)
         pygame.time.set_timer(self.delay, self.speed)

@@ -54,7 +54,7 @@ class Game:
         if self._tetris.piece.landed is True:
             self._tetris.new_piece()
         if self._tetris.update_speed:
-            self._events.set_speed(self._tetris.speed)
+            self._events.set_speed(self._tetris.level)
             self._tetris.update_speed = False
 
     def _game_events(self):
