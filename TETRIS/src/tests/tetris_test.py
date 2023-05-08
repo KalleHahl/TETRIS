@@ -76,7 +76,7 @@ class TetrisTest(unittest.TestCase):
         self.game.board[19] = [(0, 0, 0) for i in range(10)]
         self.game.full_lines()
         new = self.game.board[19]
-        self.assertEqual(self.game.score, 1)
+        self.assertEqual(self.game.score, 40)
         self.assertEqual(new, initial)
 
     def test_negative_y_coordinate_is_skipped_in_add_piece_to_board(self):
@@ -120,10 +120,11 @@ class TetrisTest(unittest.TestCase):
             coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
     def test_score_updates_level(self):
-        self.game.score = 9
+        self.game.lines_cleared = 8
         self.game.board[19] = [(0, 0, 0) for i in range(10)]
+        self.game.board[18] = [(0, 0, 0) for i in range(10)]
         self.game.full_lines()
-        self.assertEqual(self.game.score, 10)
+        self.assertEqual(self.game.score, 100)
         self.assertEqual(self.game.level, 1)
 
     def test_jump_down(self):
@@ -136,3 +137,19 @@ class TetrisTest(unittest.TestCase):
         self.game.wipe()
         with self.assertRaises(AttributeError):
             self.game.piece.y_coordinate
+
+    def test_level_affects_score(self):
+        self.game.level = 2
+        self.game.board[19] = [(0, 0, 0) for i in range(10)]
+        self.game.board[18] = [(0, 0, 0) for i in range(10)]
+        self.game.board[17] = [(0, 0, 0) for i in range(10)]
+        self.game.full_lines()
+        self.assertEqual(self.game.score, 900)
+
+    def test_0_lines_and_4_lines(self):
+        self.game.full_lines()
+        self.assertEqual(self.game.score, 0)
+        for i in range(4):
+            self.game.board[i] = [(0, 0, 0) for i in range(10)]
+        self.game.full_lines()
+        self.assertEqual(self.game.score, 1200)

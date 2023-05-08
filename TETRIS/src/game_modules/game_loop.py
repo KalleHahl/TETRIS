@@ -50,7 +50,6 @@ class Game:
         if self._tetris.end:
             self._end = True
             return
-        self._tetris.full_lines()
         if self._tetris.piece.landed is True:
             self._tetris.new_piece()
         if self._tetris.update_speed:

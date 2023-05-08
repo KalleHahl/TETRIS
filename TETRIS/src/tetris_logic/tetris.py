@@ -17,6 +17,7 @@ class Tetris:
         score: Integer, keeps track of current score
         level: current level in the game
         update_speed: Boolean value, set to True every 10 points
+        lines_cleared: Keeps track of the amount of lines cleared
     """
 
     def __init__(self):
@@ -30,6 +31,7 @@ class Tetris:
         self.score = 0
         self.level = 0
         self.update_speed = False
+        self.lines_cleared = 0
 
     def new_piece(self):
         """Creates a new piece and ghost. Checks if piece is out of bounds.
@@ -62,7 +64,7 @@ class Tetris:
 
     def move_down(self):
         """Method for moving piece down on the board. If out_of_bounds method returns
-        True, then piece is added to the board.
+        True, then piece is added to the board and full lines method is called.
         """
         old_y = self.piece.y_coordinate
         self.piece.y_coordinate += BLOCK
@@ -71,14 +73,17 @@ class Tetris:
             self.piece.y_coordinate = old_y
             self.piece.landed = True
             self.add_piece_to_board()
+            self.full_lines()
             return
 
     def jump_down(self):
         """Method for moving piece to the bottom by changing
-        its y coordinate to that of the ghost piece
+        its y coordinate to that of the ghost piece, calls
+        full_lines
         """
         self.piece.y_coordinate = self.ghost.y_coordinate
         self.add_piece_to_board()
+        self.full_lines()
         self.piece.landed = True
 
     def rotate(self):
@@ -150,18 +155,43 @@ class Tetris:
     def full_lines(self):
         """Method which iterates self.board and checks if there are any full lines.
         If line is full, it's deleted from the deque and a new empty line is appended
-        to the start of the deque. After this, score is increased and every 10 points
-        speed is also increased.
+        to the start of the deque. After this, every 10 points speed is increased and
+        after looping through the board, handle_scoring method is called with the 
+        amount of lines cleared and level when lines were cleared.
 
         """
+        level_before = self.level
+        lines = 0
         for i in range(20):
             if 0 not in self.board[i]:
-                self.score += 1
+                self.lines_cleared += 1
+                lines += 1
                 del self.board[i]
                 self.board.appendleft([0 for i in range(10)])
-                if self.score % 10 == 0:
+                if self.lines_cleared % 10 == 0:
                     self.level += 1
                     self.update_speed = True
+
+        if lines > 0:
+            self.handle_scoring(lines, level_before)
+
+    def handle_scoring(self, lines, level):
+        """Method for handling scoring, there are different scores for
+        1,2,3 and 4 lines cleared at a time.
+
+        Args:
+            lines (int): amount of lines cleared
+            level (int): level when lines were cleared
+        """
+        print(self.lines_cleared)
+        if lines == 1:
+            self.score += 40*(level+1)
+        elif lines == 2:
+            self.score += 100*(level+1)
+        elif lines == 3:
+            self.score += 300*(level+1)
+        else:
+            self.score += 1200*(level+1)
 
     def add_piece_to_board(self):
         """Method for adding piece to the board after landing.
