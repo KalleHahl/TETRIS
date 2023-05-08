@@ -5,6 +5,8 @@
 ## GUI:
 The games GUI is coded using Pythons ```pygame```-library. You can also see the Highscores-table in the same window.
 
+<img src=https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/pictures/Untitled.gif alt="gif" width="600" height="700" title="untitled">
+
 ## Tetris:
 - The game randomizes a block (I, J, L, O, S, T, Z) that starts moving down the screen
 - The block is moved to the sides using the arrow keys
@@ -17,6 +19,6 @@ The games GUI is coded using Pythons ```pygame```-library. You can also see the 
 - A scoring system is in use, which resembles the [original Nintendo scoring system](https://tetris.wiki/Scoring#Original_Nintendo_scoring_system)
 - A very crude wallkick system is enabled
 - At the end of the game, the result is stored in the database under the name chosen by the user
-
+- Database is implemented using sqlite3
 ## Further improvement:
 * The ability to log in and register
