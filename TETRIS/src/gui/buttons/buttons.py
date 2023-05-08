@@ -71,7 +71,7 @@ class Buttons:
         Returns:
             function: returns the template method with correct text
         """
-        return self._template('Enter name:', WIDTH//2, HEIGHT//2-20, 30)
+        return self._template('Enter name:', WIDTH//2, HEIGHT//2-20, 20)
 
     def highscores(self):
         """Highscore button

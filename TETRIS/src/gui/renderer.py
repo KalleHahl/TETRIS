@@ -22,6 +22,7 @@ class Renderer:
         self.screen = screen
         self.tetris = tetris
         self.button = Buttons(self.screen)
+        self.saved = False
 
     def render_backround_game(self):
         """Method for rendering picture and grid in the 
