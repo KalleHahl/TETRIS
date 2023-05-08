@@ -13,7 +13,7 @@ class EventQueue:
     def __init__(self):
         """Class constructor
         """
-        self.speed = 750
+        self.speed = 1000
         self.delay = pygame.constants.USEREVENT + 1
         pygame.time.set_timer(self.delay, self.speed)
         self.move_down_fast = pygame.constants.USEREVENT + 2
@@ -33,5 +33,5 @@ class EventQueue:
         Args:
             level (int): current level in tetris game
         """
-        self.speed = 750 // (level + 1)
+        self.speed = 1000 // (level + 1)
         pygame.time.set_timer(self.delay, self.speed)

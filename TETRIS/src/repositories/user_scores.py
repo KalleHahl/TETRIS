@@ -38,3 +38,12 @@ class UserScores:
                        (player, score))
 
         self._connection.commit()
+
+    def delete_all(self):
+        """Deletes all scores
+        """
+        cursor = self._connection.cursor()
+
+        cursor.execute("delete from scores")
+
+        self._connection.commit()

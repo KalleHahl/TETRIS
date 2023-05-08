@@ -183,7 +183,6 @@ class Tetris:
             lines (int): amount of lines cleared
             level (int): level when lines were cleared
         """
-        print(self.lines_cleared)
         if lines == 1:
             self.score += 40*(level+1)
         elif lines == 2:
