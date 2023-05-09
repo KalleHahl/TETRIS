@@ -22,4 +22,4 @@ The games GUI is coded using Pythons ```pygame```-library. You can also see the 
 - Database is implemented using sqlite3
 ## Further improvement:
 * The ability to log in and register
-* The ability to hol a piece
+* The ability to hold a piece
