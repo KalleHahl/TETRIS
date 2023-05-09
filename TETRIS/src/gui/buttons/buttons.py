@@ -1,9 +1,20 @@
 import pygame
-from src.settings import HEIGHT, WIDTH
+from src.settings import (HEIGHT, WIDTH, GAMEOVER_IMG, SCORE_IMG, START_IMG, NEXT_PIECE_IMG,
+                          HIGHSCORES_IMG, SCORE_SAVED_IMG, RESUME_IMG)
 
 
 class Buttons:
     """Class for rendering buttons
+
+    Attributes:
+        screen: pygame display
+        _game_over_img: image for game over text
+        _score_img: image for score text
+        _start_img: image for start text
+        _next_piece_img: image for next piece text
+        _highscores_img: image for highscores
+        _score_saved_img: image for score saved text
+        _resume_img: image for resume text
     """
 
     def __init__(self, screen):
@@ -13,38 +24,37 @@ class Buttons:
             screen (pygame.display): Display to render on
         """
         self.screen = screen
+        self._game_over_img = GAMEOVER_IMG
+        self._score_img = SCORE_IMG
+        self._start_img = START_IMG
+        self._next_piece_img = NEXT_PIECE_IMG
+        self._highscores_img = HIGHSCORES_IMG
+        self._score_saved_img = SCORE_SAVED_IMG
+        self._resume_img = RESUME_IMG
 
     def resume(self):
         """Resume game button
-
-        Returns:
-            function: returns the temmplate method with correct text
         """
-        return self._template('Press escape to resume!', WIDTH//2, HEIGHT//2, 40)
+        image_width = self._resume_img.get_width()
+        self.screen.blit(self._resume_img, ((WIDTH//2)-(image_width//2), HEIGHT//2))
 
     def game_over(self):
         """Game over button
-
-        Returns:
-            function: returns the template method with correct text
         """
-        return self._template('Game over', WIDTH//2, HEIGHT//4, 100)
+        image_width = self._game_over_img.get_width()
+        self.screen.blit(self._game_over_img,((WIDTH//2)-(image_width//2), 180))
 
     def start(self):
         """Start game button
-
-        Returns:
-            function: returns the template method with correct text
         """
-        return self._template('Press space to start!', WIDTH//2, HEIGHT//3, 40)
+        image_width = self._start_img.get_width()
+        self.screen.blit(self._start_img, ((WIDTH//2)-(image_width//2), HEIGHT//3))
 
     def next_piece(self):
         """Next piece button
-
-        Returns:
-            function: returns the template method with correct text
         """
-        return self._template('Next piece', WIDTH-150, 100, 40)
+        image_width = self._next_piece_img.get_width()
+        self.screen.blit(self._next_piece_img, ((WIDTH-150)-(image_width//2), 100))
 
     def score(self, score):
         """Button for current score
@@ -53,17 +63,17 @@ class Buttons:
             score (int): current score
 
         Returns:
-            function: returns the template method with correct text
+            function: returns the template method with correct score
         """
-        return self._template(f'Score: {score}', WIDTH-150, 400, 40)
+        imgae_width  = self._score_img.get_width()
+        self.screen.blit(self._score_img, ((WIDTH-150)-(imgae_width//2), 400))
+        return self._template(f'{score}', WIDTH-150, 480, 40)
 
     def score_saved(self):
         """Score saved button
-
-        Returns:
-            function: returns the template method with correct text
         """
-        return self._template('Score saved!', WIDTH//2, HEIGHT//2, 40)
+        image_width = self._score_saved_img.get_width()
+        self.screen.blit(self._score_saved_img, ((WIDTH//2)-(image_width//2), HEIGHT//2))
 
     def enter_name(self):
         """Enter name button
@@ -75,11 +85,9 @@ class Buttons:
 
     def highscores(self):
         """Highscore button
-
-        Returns:
-            function: returns the template method with correct text
         """
-        return self._template('Highscores', WIDTH//2, HEIGHT//2, 40)
+        image_width = self._highscores_img.get_width()
+        self.screen.blit(self._highscores_img, ((WIDTH//2)-(image_width//2), HEIGHT//2))
 
     def top_3(self, top_3):
         """Method for rendering top 3 scores
@@ -87,10 +95,10 @@ class Buttons:
         Args:
             top_3 (list): list of tuples with player name and score
         """
-        y_coordinate = HEIGHT//2+40
+        y_coordinate = HEIGHT//2+80
         for tup in top_3:
             self._template(f'{tup[0]}: {tup[1]}', WIDTH//2, y_coordinate, 40)
-            y_coordinate += 40
+            y_coordinate += 50
 
     def _template(self, text, x_coordinate, y_coordinate, size):
         """Template for buttons
@@ -102,7 +110,7 @@ class Buttons:
             size (int): font size
         """
         font = pygame.font.Font('freesansbold.ttf', size)
-        text_1 = font.render(text, True, (220, 220, 220), (0, 0, 0))
+        text_1 = font.render(text, True, (117, 204, 32), (0, 0, 0))
         rectangle = text_1.get_rect()
         rectangle.center = (x_coordinate, y_coordinate)
         self.screen.blit(text_1, rectangle)
@@ -114,9 +122,10 @@ class Buttons:
             player (string): player name
         """
         text = pygame.font.Font('freesansbold.ttf', 20)
-        player_name = text.render(player, True, (255, 255, 255))
+        player_name = text.render(player, True, (117, 204, 32))
         rect_width = max(200, player_name.get_width() + 15)
         input_rect = pygame.Rect(WIDTH//2-rect_width //
                                  2, HEIGHT//2, rect_width, 32)
-        pygame.draw.rect(self.screen, (255, 255, 255), input_rect, 2)
+        pygame.draw.rect(self.screen, (117, 204, 32), input_rect, 2)
         self.screen.blit(player_name, (input_rect.x+5, input_rect.y+5))
+

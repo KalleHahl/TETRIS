@@ -1,6 +1,6 @@
 import pygame
 from src.gui.buttons.buttons import Buttons
-from src.settings import BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK, WIDTH, BACKGROUND_IMG
+from src.settings import BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK, WIDTH, BACKGROUND_IMG, TETRIS_LOGO_SCALED
 
 
 class Renderer:
@@ -10,6 +10,8 @@ class Renderer:
         screen: pygame display to draw on
         tetris: tetris class to get piece coordinates
         button: buttons class for button management
+        _background: image for background
+        _tetris_logo: image for tetris logo
     """
 
     def __init__(self, screen, tetris):
@@ -22,13 +24,14 @@ class Renderer:
         self.screen = screen
         self.tetris = tetris
         self.button = Buttons(self.screen)
-        self.saved = False
+        self._background = BACKGROUND_IMG
+        self._tetris_logo = TETRIS_LOGO_SCALED
 
     def render_backround_game(self):
         """Method for rendering picture and grid in the 
         game background
         """
-        self.screen.blit(BACKGROUND_IMG, (0, 0))
+        self.screen.blit(self._background, (0, 0))
         for x_coordinate in range(0, BOARD_WIDTH, BLOCK):
             pygame.draw.line(self.screen, (LINE),
                              (x_coordinate, 0), (x_coordinate, BOARD_HEIGHT))
@@ -116,7 +119,9 @@ class Renderer:
     def render_menu(self, top_3):
         """Method for rendering menu state
         """
-        self.screen.blit(BACKGROUND_IMG, (0, 0))
+        self.screen.blit(self._background, (0, 0))
+        image_width = self._tetris_logo.get_width()
+        self.screen.blit(self._tetris_logo,((WIDTH//2)-(image_width//2), 60))
         self.button.start()
         self.button.highscores()
         self.button.top_3(top_3)
@@ -124,7 +129,7 @@ class Renderer:
     def render_score_saved(self):
         """Method for rendering score saved on display
         """
-        self.screen.blit(BACKGROUND_IMG, (0, 0))
+        self.screen.blit(self._background, (0, 0))
         self.button.score_saved()
 
     def render_game_over(self, player):
