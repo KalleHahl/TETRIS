@@ -16,4 +16,5 @@
 | 6.5 | 3 h | Added database to store scores |
 | 7.5 | 1 h | Added leadesboards, fixed bugs |
 | 8.5 | 3 h | Added tests and updated scoring |
+| 9.5 | 6 h | Made UI prettier, finishing touches, updated documentation |
 | total | 51 h 30 min | |
