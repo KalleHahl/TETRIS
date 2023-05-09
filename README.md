@@ -6,44 +6,69 @@ Tetris game with leaderboards and a very 'unique' wall kick system.
 ## Installation:
 Clone this repository to your desired directory
 
-```git clone https://github.com/KalleHahl/ot-harjoitustyo```
+```bash
+git clone https://github.com/KalleHahl/ot-harjoitustyo
+```
 
 Install dependencies
 
 
-```cd TETRIS```
+```bash
+cd TETRIS
+```
 
-```poetry install```
+```bash
+poetry install
+```
 
 Initialize database
 
-```poetry run invoke build```
+```bash
+poetry run invoke build
+```
 
 Start program
 
-```poetry run invoke start```
+```bash
+poetry run invoke start
+```
 ## Command-line:
 *Run these commands while in the TETRIS directory*
 
+Initialize database:
+```bash
+poetry run invoke build
+```
+
 Start program:
 
-```poetry run invoke start```
+```bash
+poetry run invoke start
+```
 
 Unittests:
 
-```poetry run invoke test```
+```bash
+poetry run invoke test
+```
 
 Coverage:
 
-```poetry run coverage-report```
+```bash
+poetry run coverage-report
+```
 
 Open coverage report HTML in browser:
 
-```poetry run coverage-show```
+```bash
+poetry run coverage-show
+```
 
 Pylint:
 
-```poetry run invoke lint```
+```bash
+poetry run invoke lint
+```
 
 ## Documentation:
 * [Project definition](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/definition.md)
