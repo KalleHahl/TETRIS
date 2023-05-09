@@ -31,4 +31,3 @@ class TestScoreRepo(unittest.TestCase):
         self.assertEqual(players[0], ('Kalle', 300))
         self.assertEqual(players[1], ('Timo', 200))
         self.assertEqual(players[2], ('Jankko', 100))
-        self.score_repo.delete_all()
