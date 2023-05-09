@@ -4,6 +4,14 @@
 ![CI Badge](https://github.com/KalleHahl/ot-harjoitustyo/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/KalleHahl/ot-harjoitustyo/branch/main/graph/badge.svg?token=D9XSGLPQI0)](https://codecov.io/gh/KalleHahl/ot-harjoitustyo)
 
 Tetris game with leaderboards and a very 'unique' wall kick system.
+## Documentation:
+* [Project definition](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/definition.md)
+* [Project architecture](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/architecture.md)
+* [User guide](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/userguide.md)
+* [Testing](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/testing.md)
+* [Time-log](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/timelog.md)
+* [Changelog](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/changelog.md)
+
 ## Installation:
 Clone this repository to your desired directory
 
@@ -70,11 +78,3 @@ Pylint:
 ```bash
 poetry run invoke lint
 ```
-
-## Documentation:
-* [Project definition](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/definition.md)
-* [Project architecture](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/architecture.md)
-* [User guide](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/userguide.md)
-* [Testing](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/testing.md)
-* [Time-log](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/timelog.md)
-* [Changelog](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/changelog.md)
