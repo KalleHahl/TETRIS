@@ -31,3 +31,4 @@
 * Added method to return top 3 scores from database
 * Top 3 scores are now rendered on menu screen
 * Changed scoring system to resemble the original Nintendo scoring system
+* Added pictures for buttons, UI now prettier
