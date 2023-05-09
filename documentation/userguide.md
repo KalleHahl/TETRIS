@@ -16,9 +16,15 @@ Now you can run the program by typing:
 ```poetry run invoke start```
 
 ## Keyboard actions:
-- At the start, press space to exit menu and start playing
-- Pressing the escape after the menu pauses the game, unpause by pressing escape again
-- Move the piece with arrow keys
-- Rotate piece by pressing arrow key up
-- Pressing space immediately drops piece to the bottom
+- At the start, press ```Space``` to exit menu and start playing
+- Pressing ```Escape``` after the menu pauses the game, unpause by pressing ```Escape``` again
+- Move the piece sideways by pressing arrow key &#8592; or &#8594;
+- Rotate piece by pressing arrow key &#8593;
+- Soft drop the piece by pressing arrow key &#8595;
+- Hard drop the piece by pressing ```Space```
 - Exit the game by clicking the x button in the corner of the screen with cursor
+
+## Saving a score:
+- Save your score by typing your name and pressing ```Enter```
+
+<img src=https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/pictures/Game_over.png alt='pic' width='600' height='700'>
