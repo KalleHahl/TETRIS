@@ -137,6 +137,9 @@ class TetrisTest(unittest.TestCase):
         self.game.wipe()
         with self.assertRaises(AttributeError):
             self.game.piece.y_coordinate
+        self.assertEqual(self.game.level, 0)
+        self.assertEqual(self.game.score, 0)
+        self.assertEqual(self.game.lines_cleared, 0)
 
     def test_level_affects_score(self):
         self.game.level = 2

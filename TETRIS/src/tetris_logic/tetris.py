@@ -221,5 +221,12 @@ class Tetris:
     def wipe(self):
         """Method for re-initializing the class
         """
-        self.__init__()
+        self.next_piece = Piece(160, 40)
+        self.piece = None
+        self.ghost = None
+        self.board = deque([[0 for k in range(10)] for i in range(20)])
+        self.end = False
+        self.score = 0
+        self.level = 0
         self.update_speed = True
+        self.lines_cleared = 0
