@@ -1,5 +1,7 @@
 # User guide
 Download the source code for the latest [release](https://github.com/KalleHahl/ot-harjoitustyo/releases/tag/Week6) from the zip file below the Assets-text.
+## Configuration:
+Database names can be configured in the .env-file found in the *TETRIS*-directory. The files will be automatically created in the *data*-directory if they don't exist.
 ## Start:
 To start the program, follow these steps:
 
