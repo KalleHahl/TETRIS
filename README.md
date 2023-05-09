@@ -1,5 +1,6 @@
 
-# Tetris
+<img src=https://github.com/KalleHahl/ot-harjoitustyo/blob/main/TETRIS/src/assets/TETRIS.png alt='pic'>
+
 ![CI Badge](https://github.com/KalleHahl/ot-harjoitustyo/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/KalleHahl/ot-harjoitustyo/branch/main/graph/badge.svg?token=D9XSGLPQI0)](https://codecov.io/gh/KalleHahl/ot-harjoitustyo)
 
 Tetris game with leaderboards and a very 'unique' wall kick system.
