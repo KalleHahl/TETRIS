@@ -36,25 +36,29 @@ class Buttons:
         """Resume game button
         """
         image_width = self._resume_img.get_width()
-        self.screen.blit(self._resume_img, ((WIDTH//2)-(image_width//2), HEIGHT//2))
+        self.screen.blit(self._resume_img,
+                         ((WIDTH//2)-(image_width//2), HEIGHT//2))
 
     def game_over(self):
         """Game over button
         """
         image_width = self._game_over_img.get_width()
-        self.screen.blit(self._game_over_img,((WIDTH//2)-(image_width//2), 180))
+        self.screen.blit(self._game_over_img,
+                         ((WIDTH//2)-(image_width//2), 180))
 
     def start(self):
         """Start game button
         """
         image_width = self._start_img.get_width()
-        self.screen.blit(self._start_img, ((WIDTH//2)-(image_width//2), HEIGHT//3))
+        self.screen.blit(self._start_img, ((WIDTH//2) -
+                         (image_width//2), HEIGHT//3))
 
     def next_piece(self):
         """Next piece button
         """
         image_width = self._next_piece_img.get_width()
-        self.screen.blit(self._next_piece_img, ((WIDTH-150)-(image_width//2), 100))
+        self.screen.blit(self._next_piece_img,
+                         ((WIDTH-150)-(image_width//2), 100))
 
     def score(self, score):
         """Button for current score
@@ -65,7 +69,7 @@ class Buttons:
         Returns:
             function: returns the template method with correct score
         """
-        imgae_width  = self._score_img.get_width()
+        imgae_width = self._score_img.get_width()
         self.screen.blit(self._score_img, ((WIDTH-150)-(imgae_width//2), 400))
         return self._template(f'{score}', WIDTH-150, 480, 40)
 
@@ -73,7 +77,8 @@ class Buttons:
         """Score saved button
         """
         image_width = self._score_saved_img.get_width()
-        self.screen.blit(self._score_saved_img, ((WIDTH//2)-(image_width//2), HEIGHT//2))
+        self.screen.blit(self._score_saved_img,
+                         ((WIDTH//2)-(image_width//2), HEIGHT//2))
 
     def enter_name(self):
         """Enter name button
@@ -87,7 +92,8 @@ class Buttons:
         """Highscore button
         """
         image_width = self._highscores_img.get_width()
-        self.screen.blit(self._highscores_img, ((WIDTH//2)-(image_width//2), HEIGHT//2))
+        self.screen.blit(self._highscores_img,
+                         ((WIDTH//2)-(image_width//2), HEIGHT//2))
 
     def top_3(self, top_3):
         """Method for rendering top 3 scores
@@ -128,4 +134,3 @@ class Buttons:
                                  2, HEIGHT//2, rect_width, 32)
         pygame.draw.rect(self.screen, (117, 204, 32), input_rect, 2)
         self.screen.blit(player_name, (input_rect.x+5, input_rect.y+5))
-

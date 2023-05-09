@@ -1,6 +1,7 @@
 import pygame
 from src.gui.buttons.buttons import Buttons
-from src.settings import BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK, WIDTH, BACKGROUND_IMG, TETRIS_LOGO_SCALED
+from src.settings import (BOARD_WIDTH, BOARD_HEIGHT, LINE, BLOCK,
+                          WIDTH, BACKGROUND_IMG, TETRIS_LOGO_SCALED)
 
 
 class Renderer:
@@ -121,7 +122,7 @@ class Renderer:
         """
         self.screen.blit(self._background, (0, 0))
         image_width = self._tetris_logo.get_width()
-        self.screen.blit(self._tetris_logo,((WIDTH//2)-(image_width//2), 60))
+        self.screen.blit(self._tetris_logo, ((WIDTH//2)-(image_width//2), 60))
         self.button.start()
         self.button.highscores()
         self.button.top_3(top_3)
