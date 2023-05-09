@@ -24,6 +24,9 @@ START_IMG = pygame.image.load("src/assets/START.png")
 RESUME_IMG = pygame.image.load("src/assets/RESUME.png")
 SCORE_SAVED_IMG = pygame.image.load("src/assets/SCORE_SAVED.png")
 HIGHSCORES_IMG = pygame.image.load("src/assets/HIGHSCORES.png")
+LEVEL_IMG = pygame.image.load("src/assets/level.png")
+LINES_IMG = pygame.image.load("src/assets/lines.png")
+
 
 """Piece colors
 """

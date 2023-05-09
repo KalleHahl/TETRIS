@@ -119,7 +119,7 @@ class Tetris:
             self.piece.y_coordinate = old_y + new_y
             coordinates = self.piece.piece_info()
             if not self._out_of_bounds(coordinates,
-                                      self.piece.x_coordinate, self.piece.y_coordinate):
+                                       self.piece.x_coordinate, self.piece.y_coordinate):
                 break
         else:
             self.piece.rotation = old_rotation

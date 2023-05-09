@@ -110,6 +110,8 @@ class Renderer:
         self._render_previous_pieces()
         self._button.next_piece()
         self._button.score(self._tetris.score)
+        self._button.level(self._tetris.level)
+        self._button.lines(self._tetris.lines_cleared)
 
         if pause:
             self._blur()

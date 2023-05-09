@@ -1,6 +1,6 @@
 import pygame
 from src.settings import (HEIGHT, WIDTH, GAMEOVER_IMG, SCORE_IMG, START_IMG, NEXT_PIECE_IMG,
-                          HIGHSCORES_IMG, SCORE_SAVED_IMG, RESUME_IMG)
+                          HIGHSCORES_IMG, SCORE_SAVED_IMG, RESUME_IMG, LEVEL_IMG, LINES_IMG)
 
 
 class Buttons:
@@ -31,6 +31,8 @@ class Buttons:
         self._highscores_img = HIGHSCORES_IMG
         self._score_saved_img = SCORE_SAVED_IMG
         self._resume_img = RESUME_IMG
+        self._level_img = LEVEL_IMG
+        self._lines_img = LINES_IMG
 
     def resume(self):
         """Resume game button
@@ -69,9 +71,35 @@ class Buttons:
         Returns:
             function: returns the template method with correct score
         """
-        imgae_width = self._score_img.get_width()
-        self.screen.blit(self._score_img, ((WIDTH-150)-(imgae_width//2), 400))
+        image_width = self._score_img.get_width()
+        self.screen.blit(self._score_img, ((WIDTH-150)-(image_width//2), 400))
         return self._template(f'{score}', WIDTH-150, 480, 40)
+
+    def level(self, level):
+        """Button for current level
+
+        Args:
+            level (int): current level
+
+        Returns:
+            function: template with correct level
+        """
+        image_width = self._level_img.get_width()
+        self.screen.blit(self._level_img, ((WIDTH-150)-(image_width//2), 530))
+        return self._template(f'{level}', WIDTH-150, 610, 40)
+
+    def lines(self, lines):
+        """Button for lines cleared
+
+        Args:
+            lines (int): lines cleared
+
+        Returns:
+            function: template with correct lines cleared
+        """
+        image_width = self._lines_img.get_width()
+        self.screen.blit(self._lines_img, ((WIDTH-150)-(image_width//2), 660))
+        return self._template(f'{lines}', WIDTH-150, 740, 40)
 
     def score_saved(self):
         """Score saved button
