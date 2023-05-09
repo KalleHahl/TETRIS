@@ -13,7 +13,7 @@ Testing the class responsible for database related actions (```UserScores```) is
 
 ![CI Badge](https://github.com/KalleHahl/ot-harjoitustyo/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/KalleHahl/ot-harjoitustyo/branch/main/graph/badge.svg?token=D9XSGLPQI0)](https://codecov.io/gh/KalleHahl/ot-harjoitustyo)
 
-![image]()
+![image](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/pictures/coverage.png)
 
 All files that didn't need automated testing have been omitted in the .coveragerc file
 
