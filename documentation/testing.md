@@ -4,7 +4,7 @@ The project has been tested using automated unittests with pythons unittest modu
 ## Unittests:
 
 ### Tetris-logic:
-The two classes responsible for the gameplay logic (```Tetris``` & ```Piece```) are thoroughly tested with [TetrisTest](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/TETRIS/src/tests/tetris_test.py) and [TestPiece](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/TETRIS/src/tests/piece_test.py) test classes. Testing with these classes focuses on gameplay aspects such as correct handling when piece is out of bounds and checking that level, score and lines cleared are tracked. Each test is named according to what is being tested, so I will not be going over every test here.
+The two classes responsible for the gameplay logic (```Tetris``` & ```Piece```) are thoroughly tested with [TetrisTest](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/TETRIS/src/tests/tetris_test.py) and [TestPiece](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/TETRIS/src/tests/piece_test.py) test classes. Tests in these classes focuses on gameplay aspects such as correct handling when piece is out of bounds and checking that level, score and lines cleared are tracked. Each test is named according to what is being tested, so I will not be going over every test here.
 
 ### Score-repository:
 Testing the class responsible for database related actions (```UserScores```) is tested with [TestScoreRepo](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/TETRIS/src/tests/scorerepo_test.py) test class. The tests use a separate database file configured in the .env.test-file. The test class tests only that new score can be created and that top 3 scores are fetched from the database in the correct order.
