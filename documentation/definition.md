@@ -5,7 +5,7 @@
 ## GUI:
 The games GUI is coded using Pythons ```pygame```-library. You can also see the Highscores-table in the same window.
 
-<img src=https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/pictures/Untitled.gif alt="gif" width="600" height="700" title="untitled">
+<img src=https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/pictures/UI.gif alt="gif" width="600" height="700" title="untitled">
 
 ## Tetris:
 - The game randomizes a block (I, J, L, O, S, T, Z) that starts moving down the screen
