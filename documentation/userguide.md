@@ -3,19 +3,27 @@ Download the source code for the latest [release](https://github.com/KalleHahl/o
 ## Configuration:
 Database names can be configured in the .env-file found in the *TETRIS*-directory. The files will be automatically created in the *data*-directory if they don't exist.
 ## Start:
-To start the program, follow these steps:
+Open the *TETRIS*-directory and install dependencies:
 
-```cd TETRIS```
+```bash
+cd TETRIS
+```
 
-```poetry install```
+```bash
+poetry install
+```
 
 Initialize database:
 
-```poetry run invoke build```
+```bash
+poetry run invoke build
+```
 
 Now you can run the program by typing:
 
-```poetry run invoke start```
+```bash
+poetry run invoke start
+```
 
 ## Keyboard actions:
 - At the start, press ```Space``` to exit menu and start playing
