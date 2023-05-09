@@ -41,7 +41,7 @@ class Tetris:
         self.piece = self.next_piece
         self.ghost = Ghost()
         coordinates = self.piece.piece_info()
-        if self.out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
+        if self._out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
             self.end = True
             self.piece = old_piece
         self.next_piece = Piece(160, 40)
@@ -58,7 +58,7 @@ class Tetris:
         old_x = self.piece.x_coordinate
         self.piece.x_coordinate += x_coordinate
         coordinates = self.piece.piece_info()
-        if self.out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
+        if self._out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
             self.piece.x_coordinate = old_x
         self.ghost_coordinates()
 
@@ -69,11 +69,11 @@ class Tetris:
         old_y = self.piece.y_coordinate
         self.piece.y_coordinate += BLOCK
         coordinates = self.piece.piece_info()
-        if self.out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
+        if self._out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
             self.piece.y_coordinate = old_y
             self.piece.landed = True
-            self.add_piece_to_board()
-            self.full_lines()
+            self._add_piece_to_board()
+            self._full_lines()
             return
 
     def jump_down(self):
@@ -82,8 +82,8 @@ class Tetris:
         full_lines
         """
         self.piece.y_coordinate = self.ghost.y_coordinate
-        self.add_piece_to_board()
-        self.full_lines()
+        self._add_piece_to_board()
+        self._full_lines()
         self.piece.landed = True
 
     def rotate(self):
@@ -96,11 +96,11 @@ class Tetris:
         old_offsets = self.piece.get_wall_kicks()
         self.piece.rotate()
         coordinates = self.piece.piece_info()
-        if self.out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
-            self.wallkicks(old_x, old_y, old_offsets, old_rotation)
+        if self._out_of_bounds(coordinates, self.piece.x_coordinate, self.piece.y_coordinate):
+            self._wallkicks(old_x, old_y, old_offsets, old_rotation)
         self.ghost_coordinates()
 
-    def wallkicks(self, old_x, old_y, old_offsets, old_rotation):
+    def _wallkicks(self, old_x, old_y, old_offsets, old_rotation):
         """Iterates through wallkick offsets, if wallkick is found loop is breaked
         if not, then the piece is set back to its old rotation and coordinates
 
@@ -118,7 +118,7 @@ class Tetris:
 
             self.piece.y_coordinate = old_y + new_y
             coordinates = self.piece.piece_info()
-            if not self.out_of_bounds(coordinates,
+            if not self._out_of_bounds(coordinates,
                                       self.piece.x_coordinate, self.piece.y_coordinate):
                 break
         else:
@@ -126,7 +126,7 @@ class Tetris:
             self.piece.x_coordinate = old_x
             self.piece.y_coordinate = old_y
 
-    def out_of_bounds(self, coordinates, x_coordinate, y_coordinate):
+    def _out_of_bounds(self, coordinates, x_coordinate, y_coordinate):
         """Method for checking if piece is out of bounds or touching a piece
         on the board.
 
@@ -152,7 +152,7 @@ class Tetris:
 
         return False
 
-    def full_lines(self):
+    def _full_lines(self):
         """Method which iterates self.board and checks if there are any full lines.
         If line is full, it's deleted from the deque and a new empty line is appended
         to the start of the deque. After this, every 10 points speed is increased and
@@ -173,9 +173,9 @@ class Tetris:
                     self.update_speed = True
 
         if lines > 0:
-            self.handle_scoring(lines, level_before)
+            self._handle_scoring(lines, level_before)
 
-    def handle_scoring(self, lines, level):
+    def _handle_scoring(self, lines, level):
         """Method for handling scoring, there are different scores for
         1,2,3 and 4 lines cleared at a time.
 
@@ -192,7 +192,7 @@ class Tetris:
         else:
             self.score += 1200*(level+1)
 
-    def add_piece_to_board(self):
+    def _add_piece_to_board(self):
         """Method for adding piece to the board after landing.
         """
         coordinates = self.piece.piece_info()
@@ -214,7 +214,7 @@ class Tetris:
 
         while True:
             self.ghost.y_coordinate += BLOCK
-            if self.out_of_bounds(coordinates, self.ghost.x_coordinate, self.ghost.y_coordinate):
+            if self._out_of_bounds(coordinates, self.ghost.x_coordinate, self.ghost.y_coordinate):
                 self.ghost.y_coordinate -= BLOCK
                 break
 

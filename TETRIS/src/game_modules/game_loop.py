@@ -17,6 +17,8 @@ class Game:
         clock: clock class for pygame clock
         move_down_fast: indicates if arrowkey down is held down
         player: player name
+        score_repo: class for database functionalities
+        top_3: current top 3 scores
     """
 
     def __init__(self, screen, tetris, renderer, event_queue, clock, score_repo):
@@ -28,6 +30,7 @@ class Game:
             renderer (class): renderer class
             event_queue (class): event queue class
             clock (class): clock class
+            score_repo (class): UserScores class
         """
         self._state = 'menu'
         self._screen = screen
@@ -45,7 +48,7 @@ class Game:
 
     def _update(self):
         """Method for keeping game updated when playing.
-        Checks full lines, if piece has landed etc
+        Checks for game end, piece landing and if speed needs to be updated
         """
         if self._tetris.end:
             self._end = True

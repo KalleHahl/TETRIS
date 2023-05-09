@@ -56,32 +56,32 @@ class TetrisTest(unittest.TestCase):
         self.game.new_piece()
         self.game.piece.x_coordinate = -40
         coordinates = self.game.piece.piece_info()
-        self.assertTrue(self.game.out_of_bounds(
+        self.assertTrue(self.game._out_of_bounds(
             coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
         self.game.new_piece()
         self.game.piece.x_coordinate = 400
         coordinates = self.game.piece.piece_info()
-        self.assertTrue(self.game.out_of_bounds(
+        self.assertTrue(self.game._out_of_bounds(
             coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
         self.game.new_piece()
         self.game.piece.y_coordinate = 800
         coordinates = self.game.piece.piece_info()
-        self.assertTrue(self.game.out_of_bounds(
+        self.assertTrue(self.game._out_of_bounds(
             coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
     def test_full_lines(self):
         initial = self.game.board[19]
         self.game.board[19] = [(0, 0, 0) for i in range(10)]
-        self.game.full_lines()
+        self.game._full_lines()
         new = self.game.board[19]
         self.assertEqual(self.game.score, 40)
         self.assertEqual(new, initial)
 
     def test_negative_y_coordinate_is_skipped_in_add_piece_to_board(self):
         self.game.piece.color = (0, 0, 0)
-        self.game.add_piece_to_board()
+        self.game._add_piece_to_board()
         test = (0, 0, 0) not in self.game.board[19]
         self.assertTrue(test)
 
@@ -114,16 +114,16 @@ class TetrisTest(unittest.TestCase):
     def test_y_coordinate_below0(self):
         self.game.piece.y_coordinate = -40
         coordinates = self.game.piece.piece_info()
-        self.game.add_piece_to_board()
+        self.game._add_piece_to_board()
         self.assertEqual(self.game.piece.y_coordinate, -40)
-        self.assertFalse(self.game.out_of_bounds(
+        self.assertFalse(self.game._out_of_bounds(
             coordinates, self.game.piece.x_coordinate, self.game.piece.y_coordinate))
 
     def test_score_updates_level(self):
         self.game.lines_cleared = 8
         self.game.board[19] = [(0, 0, 0) for i in range(10)]
         self.game.board[18] = [(0, 0, 0) for i in range(10)]
-        self.game.full_lines()
+        self.game._full_lines()
         self.assertEqual(self.game.score, 100)
         self.assertEqual(self.game.level, 1)
 
@@ -146,13 +146,13 @@ class TetrisTest(unittest.TestCase):
         self.game.board[19] = [(0, 0, 0) for i in range(10)]
         self.game.board[18] = [(0, 0, 0) for i in range(10)]
         self.game.board[17] = [(0, 0, 0) for i in range(10)]
-        self.game.full_lines()
+        self.game._full_lines()
         self.assertEqual(self.game.score, 900)
 
     def test_0_lines_and_4_lines(self):
-        self.game.full_lines()
+        self.game._full_lines()
         self.assertEqual(self.game.score, 0)
         for i in range(4):
             self.game.board[i] = [(0, 0, 0) for i in range(10)]
-        self.game.full_lines()
+        self.game._full_lines()
         self.assertEqual(self.game.score, 1200)
