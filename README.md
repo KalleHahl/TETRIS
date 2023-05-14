@@ -12,8 +12,16 @@ Tetris game with leaderboards and a very 'unique' wall kick system.
 * [Time-log](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/timelog.md)
 * [Changelog](https://github.com/KalleHahl/ot-harjoitustyo/blob/main/documentation/changelog.md)
 
+## Releases: 
+[week5](https://github.com/KalleHahl/ot-harjoitustyo/releases/tag/week5)
+
+[week6](https://github.com/KalleHahl/ot-harjoitustyo/releases/tag/Week6)
+
+[Final](https://github.com/KalleHahl/ot-harjoitustyo/releases/tag/Final)
+
 ## Installation:
-Clone this repository to your desired directory
+Clone this repository to your desired directory or download the latest 
+[release](https://github.com/KalleHahl/ot-harjoitustyo/releases/tag/Final)
 
 ```bash
 git clone https://github.com/KalleHahl/ot-harjoitustyo
