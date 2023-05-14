@@ -10,6 +10,8 @@ from src.database_connection import get_data_base_connection
 
 
 def main():
+    """Main function which starts program when called
+    """
     display = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption('Tetris')
     tetris = Tetris()

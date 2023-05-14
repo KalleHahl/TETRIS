@@ -8,13 +8,7 @@ class Buttons:
 
     Attributes:
         screen: pygame display
-        _game_over_img: image for game over text
-        _score_img: image for score text
-        _start_img: image for start text
-        _next_piece_img: image for next piece text
-        _highscores_img: image for highscores
-        _score_saved_img: image for score saved text
-        _resume_img: image for resume text
+        images: dictionary for images
     """
 
     def __init__(self, screen):
@@ -24,42 +18,58 @@ class Buttons:
             screen (pygame.display): Display to render on
         """
         self.screen = screen
-        self._game_over_img = GAMEOVER_IMG
-        self._score_img = SCORE_IMG
-        self._start_img = START_IMG
-        self._next_piece_img = NEXT_PIECE_IMG
-        self._highscores_img = HIGHSCORES_IMG
-        self._score_saved_img = SCORE_SAVED_IMG
-        self._resume_img = RESUME_IMG
-        self._level_img = LEVEL_IMG
-        self._lines_img = LINES_IMG
+        self.images = self.load_images()
+
+    def load_images(self):
+        """Method for loading all images
+
+        Returns:
+            dictionary: dictionary for images
+        """
+        images = {
+            "game_over": GAMEOVER_IMG,
+            "score": SCORE_IMG,
+            "start": START_IMG,
+            "next_piece": NEXT_PIECE_IMG,
+            "highscores": HIGHSCORES_IMG,
+            "score_saved": SCORE_SAVED_IMG,
+            "resume": RESUME_IMG,
+            "level": LEVEL_IMG,
+            "lines": LINES_IMG
+        }
+
+        return images
 
     def resume(self):
         """Resume game button
         """
-        image_width = self._resume_img.get_width()
-        self.screen.blit(self._resume_img,
+        image = self.images["resume"]
+        image_width = image.get_width()
+        self.screen.blit(image,
                          ((WIDTH//2)-(image_width//2), HEIGHT//2))
 
     def game_over(self):
         """Game over button
         """
-        image_width = self._game_over_img.get_width()
-        self.screen.blit(self._game_over_img,
+        image = self.images["game_over"]
+        image_width = image.get_width()
+        self.screen.blit(image,
                          ((WIDTH//2)-(image_width//2), 180))
 
     def start(self):
         """Start game button
         """
-        image_width = self._start_img.get_width()
-        self.screen.blit(self._start_img, ((WIDTH//2) -
+        image = self.images["start"]
+        image_width = image.get_width()
+        self.screen.blit(image, ((WIDTH//2) -
                          (image_width//2), HEIGHT//3))
 
     def next_piece(self):
         """Next piece button
         """
-        image_width = self._next_piece_img.get_width()
-        self.screen.blit(self._next_piece_img,
+        image = self.images["next_piece"]
+        image_width = image.get_width()
+        self.screen.blit(image,
                          ((WIDTH-150)-(image_width//2), 100))
 
     def score(self, score):
@@ -71,8 +81,9 @@ class Buttons:
         Returns:
             function: returns the template method with correct score
         """
-        image_width = self._score_img.get_width()
-        self.screen.blit(self._score_img, ((WIDTH-150)-(image_width//2), 400))
+        image = self.images["score"]
+        image_width = image.get_width()
+        self.screen.blit(image, ((WIDTH-150)-(image_width//2), 400))
         return self._template(f'{score}', WIDTH-150, 480, 40)
 
     def level(self, level):
@@ -84,8 +95,9 @@ class Buttons:
         Returns:
             function: template with correct level
         """
-        image_width = self._level_img.get_width()
-        self.screen.blit(self._level_img, ((WIDTH-150)-(image_width//2), 530))
+        image = self.images["level"]
+        image_width = image.get_width()
+        self.screen.blit(image, ((WIDTH-150)-(image_width//2), 530))
         return self._template(f'{level}', WIDTH-150, 610, 40)
 
     def lines(self, lines):
@@ -97,15 +109,17 @@ class Buttons:
         Returns:
             function: template with correct lines cleared
         """
-        image_width = self._lines_img.get_width()
-        self.screen.blit(self._lines_img, ((WIDTH-150)-(image_width//2), 660))
+        image = self.images["lines"]
+        image_width = image.get_width()
+        self.screen.blit(image, ((WIDTH-150)-(image_width//2), 660))
         return self._template(f'{lines}', WIDTH-150, 740, 40)
 
     def score_saved(self):
         """Score saved button
         """
-        image_width = self._score_saved_img.get_width()
-        self.screen.blit(self._score_saved_img,
+        image = self.images["score_saved"]
+        image_width = image.get_width()
+        self.screen.blit(image,
                          ((WIDTH//2)-(image_width//2), HEIGHT//2))
 
     def enter_name(self):
@@ -119,8 +133,9 @@ class Buttons:
     def highscores(self):
         """Highscore button
         """
-        image_width = self._highscores_img.get_width()
-        self.screen.blit(self._highscores_img,
+        image = self.images["highscores"]
+        image_width = image.get_width()
+        self.screen.blit(image,
                          ((WIDTH//2)-(image_width//2), HEIGHT//2))
 
     def top_3(self, top_3):
