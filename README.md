@@ -24,7 +24,7 @@ Clone this repository to your desired directory or download the latest
 [release](https://github.com/KalleHahl/ot-harjoitustyo/releases/tag/Final)
 
 ```bash
-git clone https://github.com/KalleHahl/ot-harjoitustyo
+git clone https://github.com/KalleHahl/TETRIS
 ```
 
 Install dependencies
